@@ -104,6 +104,7 @@ namespace ProjAndreVeiculosV3_Cliente.Controllers
         {
             var enderecoId = await CriarEnderecoRemotamente(cep);
 
+
             if (enderecoId != null)
             {
                 Clientes cliente = new Clientes(clienteDTO);

@@ -124,6 +124,48 @@ namespace ProjAndreVeiculosV3_Funcionario.Controllers
             return CreatedAtAction("GetFuncionario", new { id = funcionario.Documento }, funcionario);
         }
 
+        [HttpPost("{cep}")]
+        public async Task<ActionResult<Funcionario>> PostCliente(string cep, FuncionarioDTO funcionarioDTO)
+        {
+            var enderecoId = await CriarEnderecoRemotamente(cep);
+
+            if (enderecoId != null)
+            {
+                Funcionario funcionario = new Funcionario(funcionarioDTO);
+                funcionario.Endereco = await _context.Endereco.FindAsync(enderecoId);
+                funcionario.Cargo = await _context.Cargo.FindAsync(funcionario.Cargo.Id);
+
+                _context.Funcionarios.Add(funcionario);
+                await _context.SaveChangesAsync();
+
+                return CreatedAtAction("GetFuncionario", new { id = funcionario.Documento }, funcionario);
+            }
+            else
+            {
+                return BadRequest("Erro ao criar endereço pelo CEP.");
+            }
+        }
+
+        private async Task<int?> CriarEnderecoRemotamente(string cep)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                string url = $"https://localhost:7261/api/Enderecos/{cep}";
+
+                var response = await httpClient.PostAsync(url, null);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var enderecoId = await response.Content.ReadAsStringAsync();
+                    return int.Parse(enderecoId);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
         // DELETE: api/Funcionarios/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteFuncionario(string id)

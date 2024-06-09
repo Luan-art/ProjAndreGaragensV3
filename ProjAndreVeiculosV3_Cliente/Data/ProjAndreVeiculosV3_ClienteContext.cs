@@ -16,7 +16,6 @@ namespace ProjAndreVeiculosV3_Cliente.Data
 
         public DbSet<Clientes> Clientes { get; set; }
         public DbSet<Funcionario> Funcionarios { get; set; }
-
         public DbSet<Endereco> Endereco { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

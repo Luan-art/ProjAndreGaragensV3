@@ -14,6 +14,6 @@ namespace Models.DTO
         public decimal ValorVenda { get; set; }
         public string ClienteDocumento { get; set; }
         public string FuncionarioDocumento { get; set; }
-        public Pagamento Pagamento { get; set; }
+        public int PagamentoId { get; set; }
     }
 }

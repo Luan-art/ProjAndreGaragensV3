@@ -21,14 +21,14 @@ namespace Models
         {
 
         }
-        public Venda(VendaDTO DTO)
+        public Venda(VendaDTO DTO) 
         {
             Carro = new Carro { Placa = DTO.CarroPlaca };
             DataVenda = DTO.DataVenda;
             ValorVenda = DTO.ValorVenda;
             Cliente = new Clientes { Documento = DTO.ClienteDocumento };
             Funcionario = new Funcionario { Documento = DTO.FuncionarioDocumento };
-            Pagamento = DTO.Pagamento;
+            Pagamento = new Pagamento { Id = DTO.PagamentoId };
         }
     }
 }

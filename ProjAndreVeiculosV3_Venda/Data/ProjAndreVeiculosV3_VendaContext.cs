@@ -9,27 +9,32 @@ namespace ProjAndreVeiculosV3_Venda.Data
 {
     public class ProjAndreVeiculosV3_VendaContext : DbContext
     {
-        public ProjAndreVeiculosV3_VendaContext (DbContextOptions<ProjAndreVeiculosV3_VendaContext> options)
+        public ProjAndreVeiculosV3_VendaContext(DbContextOptions<ProjAndreVeiculosV3_VendaContext> options)
             : base(options)
         {
         }
 
-        public DbSet<Models.Venda> Venda { get; set; } = default!;
+        public DbSet<Models.Venda> Vendas { get; set; } = default!;
         public DbSet<Models.Carro> Carro { get; set; } = default!;
+        public DbSet<Models.Pessoas> Pessoas { get; set; } = default!;
         public DbSet<Models.Clientes> Cliente { get; set; } = default!;
-        public DbSet<Models.Funcionario> Funcionario { get; set; } = default!;
+        public DbSet<Models.Funcionario> Funcionarios { get; set; } = default!;
         public DbSet<Models.Pagamento> Pagamento { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
 
-            // Configura a chave primária na entidade raiz Pessoa
+            modelBuilder.Entity<Venda>()
+                .ToTable("Vendas");
+
             modelBuilder.Entity<Pessoas>()
-                .HasKey(p => p.Documento);
+                .ToTable("Pessoas")
+                .HasDiscriminator<string>("PessoaType")
+                .HasValue<Clientes>("Clientes")
+                .HasValue<Funcionario>("Funcionarios");
 
-            modelBuilder.Entity<Funcionario>().ToTable("Funcionario");
-
+            base.OnModelCreating(modelBuilder);
         }
+
     }
 }

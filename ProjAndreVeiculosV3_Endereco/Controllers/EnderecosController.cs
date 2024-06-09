@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,10 +17,13 @@ namespace ProjAndreVeiculosV3_Endereco.Controllers
     public class EnderecosController : ControllerBase
     {
         private readonly ProjAndreVeiculosV3_EnderecoContext _context;
+        private readonly HttpClient _httpClient;
 
-        public EnderecosController(ProjAndreVeiculosV3_EnderecoContext context)
+
+        public EnderecosController(ProjAndreVeiculosV3_EnderecoContext context, HttpClient httpClient)
         {
             _context = context;
+            _httpClient = httpClient;
         }
 
         // GET: api/Enderecos
@@ -48,6 +53,35 @@ namespace ProjAndreVeiculosV3_Endereco.Controllers
             }
 
             return endereco;
+        }
+
+        [HttpGet("cep/{cep}")]
+        public async Task<ActionResult<Endereco>> GetEnderecoByCep(string cep)
+        {
+            string url = $"https://viacep.com.br/ws/{cep}/json/";
+
+            HttpResponseMessage response = await _httpClient.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string jsonResponse = await response.Content.ReadAsStringAsync();
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+                var enderecoViaCep = JsonSerializer.Deserialize<Endereco>(jsonResponse, options);
+
+                if (enderecoViaCep == null || string.IsNullOrWhiteSpace(enderecoViaCep.CEP))
+                {
+                    return NotFound("Endereço não encontrado para o CEP fornecido.");
+                }
+
+                return enderecoViaCep;
+            }
+            else
+            {
+                return BadRequest("Erro ao buscar endereço pelo CEP.");
+            }
         }
 
         // PUT: api/Enderecos/5
@@ -95,6 +129,44 @@ namespace ProjAndreVeiculosV3_Endereco.Controllers
 
             return CreatedAtAction("GetEndereco", new { id = endereco.Id }, endereco);
         }
+
+        [HttpPost("{cep}")]
+        public async Task<ActionResult<Endereco>> PostEndereco(string cep)
+        {
+            string url = $"https://viacep.com.br/ws/{cep}/json/";
+
+            HttpResponseMessage response = await _httpClient.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string jsonResponse = await response.Content.ReadAsStringAsync();
+                var enderecoViaCep = JsonSerializer.Deserialize<Endereco>(jsonResponse);
+
+                if (enderecoViaCep == null || enderecoViaCep.CEP == null)
+                {
+                    return NotFound("Endereço não encontrado para o CEP fornecido.");
+                }
+
+                var endereco = new Endereco
+                {
+                    Logradouro = enderecoViaCep.Logradouro,
+                    Bairro = enderecoViaCep.Bairro,
+                    Cidade = enderecoViaCep.Cidade,
+                    UF = enderecoViaCep.UF,
+                    CEP = enderecoViaCep.CEP
+                };
+
+                _context.Endereco.Add(endereco);
+                await _context.SaveChangesAsync();
+
+                return CreatedAtAction(nameof(GetEndereco), new { id = endereco.Id }, endereco);
+            }
+            else
+            {
+                return BadRequest("Erro ao buscar endereço pelo CEP.");
+            }
+        }
+
 
         // DELETE: api/Enderecos/5
         [HttpDelete("{id}")]

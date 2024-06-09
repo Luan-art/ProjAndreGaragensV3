@@ -1,22 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
 
 namespace Models
 {
     public class Endereco
     {
-
         public int Id { get; set; }
-        public  string Logradouro { get; set; }
+
+        [JsonPropertyName("logradouro")]
+        public string Logradouro { get; set; }
+
+        [JsonPropertyName("cep")]
         public string CEP { get; set; }
+
+        [JsonPropertyName("bairro")]
         public string Bairro { get; set; }
-        public string TipoLogradouro { get; set; }
-        public string Complemento { get; set; }
-        public int Numero { get; set; }
-        public string Uf { get; set; }
+
+        [JsonPropertyName("complemento")]
+        public string? Complemento { get; set; }
+
+        [JsonPropertyName("localidade")]
         public string Cidade { get; set; }
+
+        [JsonPropertyName("uf")]
+        public string UF { get; set; }
+
     }
 }

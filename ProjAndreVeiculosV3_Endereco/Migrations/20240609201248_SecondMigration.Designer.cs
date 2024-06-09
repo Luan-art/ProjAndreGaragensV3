@@ -11,8 +11,8 @@ using ProjAndreVeiculosV3_Endereco.Data;
 namespace ProjAndreVeiculosV3_Endereco.Migrations
 {
     [DbContext(typeof(ProjAndreVeiculosV3_EnderecoContext))]
-    [Migration("20240608213519_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20240609201248_SecondMigration")]
+    partial class SecondMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,21 +44,13 @@ namespace ProjAndreVeiculosV3_Endereco.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Complemento")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Logradouro")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Numero")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TipoLogradouro")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Uf")
+                    b.Property<string>("UF")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

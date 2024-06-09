@@ -30,7 +30,14 @@ namespace ProjAndreVeiculosV3_Pagamento.Controllers
           {
               return NotFound();
           }
-            return await _context.Pagamento.ToListAsync();
+
+            var pagamentos = await _context.Pagamento
+                .Include(p => p.Boleto)
+                .Include(p => p.Cartao)
+                .Include(p => p.Pix)
+                .ToListAsync();
+
+            return pagamentos;
         }
 
         // GET: api/Pagamentos/5
@@ -41,7 +48,11 @@ namespace ProjAndreVeiculosV3_Pagamento.Controllers
           {
               return NotFound();
           }
-            var pagamento = await _context.Pagamento.FindAsync(id);
+            var pagamento = await _context.Pagamento
+                   .Include(p => p.Boleto)
+                   .Include(p => p.Cartao)
+                   .Include(p => p.Pix)
+                   .FirstOrDefaultAsync(p => p.Id == id);
 
             if (pagamento == null)
             {

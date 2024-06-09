@@ -30,7 +30,11 @@ namespace ProjAndreVeiculosV3_Funcionario.Controllers
           {
               return NotFound();
           }
-            return await _context.Funcionarios.ToListAsync();
+            var funcionarios = await _context.Funcionarios.ToListAsync();
+
+  
+
+            return funcionarios;
         }
 
         // GET: api/Funcionarios/5
@@ -41,7 +45,10 @@ namespace ProjAndreVeiculosV3_Funcionario.Controllers
           {
               return NotFound();
           }
-            var funcionario = await _context.Funcionarios.FindAsync(id);
+            var funcionario = await _context.Funcionarios
+                  .Include(p => p.Cargo)
+                  .Include(p => p.Endereco)
+                  .FirstOrDefaultAsync(p => p.Documento == id);
 
             if (funcionario == null)
             {

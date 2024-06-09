@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -30,7 +31,15 @@ namespace ProjAndreVeiculosV3_Venda.Controllers
           {
               return NotFound();
           }
-            return await _context.Vendas.ToListAsync();
+
+            var vendas = await _context.Vendas
+                .Include(v => v.Cliente)
+                .Include(v => v.Carro)
+                .Include(v => v.Pagamento)
+                .Include(v => v.Funcionario)
+                .ToListAsync();
+
+            return vendas;
         }
 
         // GET: api/Vendas/5
@@ -41,7 +50,12 @@ namespace ProjAndreVeiculosV3_Venda.Controllers
           {
               return NotFound();
           }
-            var venda = await _context.Vendas.FindAsync(id);
+            var venda = await _context.Vendas
+                    .Include(v => v.Cliente)
+                    .Include(v => v.Carro)
+                    .Include(v => v.Pagamento)
+                    .Include(v => v.Funcionario)
+                    .FirstOrDefaultAsync(v => v.Id == id);
 
             if (venda == null)
             {
@@ -49,6 +63,7 @@ namespace ProjAndreVeiculosV3_Venda.Controllers
             }
 
             return venda;
+
         }
 
         // PUT: api/Vendas/5

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Humanizer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -30,11 +31,19 @@ namespace ProjAndreVeiculosV3_Cliente.Controllers
           {
               return NotFound();
           }
-            return await _context.Clientes.ToListAsync();
-        }
 
-        // GET: api/Clientes/5
-        [HttpGet("{id}")]
+            var clientes = await _context.Clientes.ToListAsync();
+            foreach (Clientes cliente in clientes)
+            {
+                Endereco endereco = await _context.Endereco.Where(e => cliente.Endereco.Id == e.Id).FirstAsync();
+                cliente.Endereco = endereco;
+            }
+            return clientes;
+        }
+    
+
+    // GET: api/Clientes/5
+    [HttpGet("{id}")]
         public async Task<ActionResult<Clientes>> GetCliente(string id)
         {
           if (_context.Clientes == null)

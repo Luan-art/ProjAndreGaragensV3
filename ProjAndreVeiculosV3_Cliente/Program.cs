@@ -1,11 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Models;
 using ProjAndreVeiculosV3_Cliente.Data;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ProjAndreVeiculosV3_ClienteContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ProjAndreVeiculosV3_ClienteContext") ?? throw new InvalidOperationException("Connection string 'ProjAndreVeiculosV3_ClienteContext' not found.")));
 
 // Add services to the container.
+builder.Services.AddHttpClient();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

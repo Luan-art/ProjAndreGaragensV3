@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjAndreVeiculosV3_Endereco.Data;
 
@@ -10,9 +11,10 @@ using ProjAndreVeiculosV3_Endereco.Data;
 namespace ProjAndreVeiculosV3_Endereco.Migrations
 {
     [DbContext(typeof(ProjAndreVeiculosV3_EnderecoContext))]
-    partial class ProjAndreVeiculosV3_EnderecoContextModelSnapshot : ModelSnapshot
+    [Migration("20240609221414_ThirdMigration")]
+    partial class ThirdMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,7 +42,7 @@ namespace ProjAndreVeiculosV3_Endereco.Migrations
                     b.Property<string>("Complemento")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Localidade")
+                    b.Property<string>("Localicade")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

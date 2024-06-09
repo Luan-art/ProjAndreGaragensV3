@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjAndreVeiculosV3_Endereco.Data;
 
@@ -10,9 +11,10 @@ using ProjAndreVeiculosV3_Endereco.Data;
 namespace ProjAndreVeiculosV3_Endereco.Migrations
 {
     [DbContext(typeof(ProjAndreVeiculosV3_EnderecoContext))]
-    partial class ProjAndreVeiculosV3_EnderecoContextModelSnapshot : ModelSnapshot
+    [Migration("20240609221705_FourMigration")]
+    partial class FourMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

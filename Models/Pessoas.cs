@@ -32,7 +32,6 @@ namespace Models
             Documento = dto.Documento;
             Nome = dto.Nome;
             DataNascimento = dto.DataNascimento;
-            Endereco = new Endereco { Id = dto.Endereco};
             Email = dto.Email;
             Telefone = dto.Telefone;
             Email = dto.Email;

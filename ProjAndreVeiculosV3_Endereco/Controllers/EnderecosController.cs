@@ -131,10 +131,9 @@ namespace ProjAndreVeiculosV3_Endereco.Controllers
         }
 
         [HttpPost("{cep}")]
-        public async Task<ActionResult<Endereco>> PostEndereco(string cep)
+        public async Task<ActionResult<int>> PostEndereco(string cep)
         {
             string url = $"https://viacep.com.br/ws/{cep}/json/";
-
             HttpResponseMessage response = await _httpClient.GetAsync(url);
 
             if (response.IsSuccessStatusCode)
@@ -142,24 +141,17 @@ namespace ProjAndreVeiculosV3_Endereco.Controllers
                 string jsonResponse = await response.Content.ReadAsStringAsync();
                 var enderecoViaCep = JsonSerializer.Deserialize<Endereco>(jsonResponse);
 
-                if (enderecoViaCep == null || enderecoViaCep.CEP == null)
+                if (enderecoViaCep == null || string.IsNullOrWhiteSpace(enderecoViaCep.CEP))
                 {
-                    return NotFound("Endereço não encontrado para o CEP fornecido.");
+                    return BadRequest("Endereço não encontrado para o CEP fornecido.");
                 }
 
-                var endereco = new Endereco
-                {
-                    Logradouro = enderecoViaCep.Logradouro,
-                    Bairro = enderecoViaCep.Bairro,
-                    Cidade = enderecoViaCep.Cidade,
-                    UF = enderecoViaCep.UF,
-                    CEP = enderecoViaCep.CEP
-                };
-
+                var endereco = new Endereco(_httpClient, url);
+                    
                 _context.Endereco.Add(endereco);
                 await _context.SaveChangesAsync();
 
-                return CreatedAtAction(nameof(GetEndereco), new { id = endereco.Id }, endereco);
+                return endereco.Id;
             }
             else
             {

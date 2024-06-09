@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Runtime.ConstrainedExecution;
 using System.Threading.Tasks;
 using Humanizer;
 using Microsoft.AspNetCore.Http;
@@ -8,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Models;
 using Models.DTO;
+using Newtonsoft.Json;
 using ProjAndreVeiculosV3_Cliente.Data;
 
 namespace ProjAndreVeiculosV3_Cliente.Controllers
@@ -17,20 +20,23 @@ namespace ProjAndreVeiculosV3_Cliente.Controllers
     public class ClientesController : ControllerBase
     {
         private readonly ProjAndreVeiculosV3_ClienteContext _context;
+        private readonly HttpClient _httpClient;
 
-        public ClientesController(ProjAndreVeiculosV3_ClienteContext context)
+        public ClientesController(ProjAndreVeiculosV3_ClienteContext context, HttpClient httpClient)
         {
             _context = context;
+            _httpClient = httpClient;
+
         }
 
         // GET: api/Clientes
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Clientes>>> GetCliente()
         {
-          if (_context.Clientes == null)
-          {
-              return NotFound();
-          }
+            if (_context.Clientes == null)
+            {
+                return NotFound();
+            }
 
             var clientes = await _context.Clientes.ToListAsync();
             foreach (Clientes cliente in clientes)
@@ -40,16 +46,16 @@ namespace ProjAndreVeiculosV3_Cliente.Controllers
             }
             return clientes;
         }
-    
 
-    // GET: api/Clientes/5
-    [HttpGet("{id}")]
+
+        // GET: api/Clientes/5
+        [HttpGet("{id}")]
         public async Task<ActionResult<Clientes>> GetCliente(string id)
         {
-          if (_context.Clientes == null)
-          {
-              return NotFound();
-          }
+            if (_context.Clientes == null)
+            {
+                return NotFound();
+            }
             var cliente = await _context.Clientes.FindAsync(id);
 
             if (cliente == null)
@@ -91,37 +97,49 @@ namespace ProjAndreVeiculosV3_Cliente.Controllers
             return NoContent();
         }
 
-        // POST: api/Clientes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Clientes>> PostCliente(ClienteDTO clienteDTO)
+        // POST: api/Clientes/{cep}
+        [HttpPost("{cep}")]
+        public async Task<ActionResult<Clientes>> PostCliente(string cep, ClienteDTO clienteDTO)
         {
-          if (_context.Clientes == null)
-          {
-              return Problem("Entity set 'ProjAndreVeiculosV3_ClienteContext.Cliente'  is null.");
-          }
+            var enderecoId = await CriarEnderecoRemotamente(cep);
 
-            Clientes cliente = new Clientes(clienteDTO);
-            cliente.Endereco = await _context.Endereco.FindAsync(cliente.Endereco.Id);
-            _context.Clientes.Add(cliente);
-            try
+            if (enderecoId != null)
             {
+                Clientes cliente = new Clientes(clienteDTO);
+                cliente.Endereco = await _context.Endereco.FindAsync(enderecoId);
+
+                _context.Clientes.Add(cliente);
                 await _context.SaveChangesAsync();
+
+                return CreatedAtAction("GetCliente", new { id = cliente.Documento }, cliente);
             }
-            catch (DbUpdateException)
+            else
             {
-                if (ClienteExists(cliente.Documento))
+                return BadRequest("Erro ao criar endereço pelo CEP.");
+            }
+        }
+
+        private async Task<int?> CriarEnderecoRemotamente(string cep)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                string url = $"https://localhost:7261/api/Enderecos/{cep}";
+
+                var response = await httpClient.PostAsync(url, null);
+
+                if (response.IsSuccessStatusCode)
                 {
-                    return Conflict();
+                    var enderecoId = await response.Content.ReadAsStringAsync();
+                    return int.Parse(enderecoId);
                 }
                 else
                 {
-                    throw;
+                    return null;
                 }
             }
-
-            return CreatedAtAction("GetCliente", new { id = cliente.Documento }, cliente);
         }
+
 
         // DELETE: api/Clientes/5
         [HttpDelete("{id}")]

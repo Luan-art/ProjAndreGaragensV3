@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RepositoriesADO
+namespace InterfaceRepositorys
 {
-    public interface IVendaRepositoryADO
+    public interface IPixRepository
     {
-        bool InserirVenda(Venda venda);
-        Venda GetVenda(int id);
+        bool InserirPix(Pix pix);
+        Pix GetPix(string id);
     }
 }

@@ -1,8 +1,8 @@
 ﻿using Models;
 
-namespace RepositoriesDapper
+namespace InterfaceRepositorys
 {
-    public interface IClienteRepositoryDapper
+    public interface IClienteRepository
     {
         bool InserirCliente(Clientes cliente);
         Clientes GetCliente(string documento);

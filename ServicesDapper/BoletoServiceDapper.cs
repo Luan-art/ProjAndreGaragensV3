@@ -7,7 +7,7 @@ namespace ServicesDapper
 {
     public class BoletoServiceDapper
     {
-        private IBoletoRepositoryDapper _boletoRepository;
+        private IBoletoRepository _boletoRepository;
 
         public BoletoServiceDapper()
         {

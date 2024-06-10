@@ -5,9 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RepositoriesDapper
+namespace InterfaceRepositorys
 {
-    public interface IVendaRepositoryDapper
+
+    public interface IVendaRepository
     {
         bool InserirVenda(Venda venda);
         Venda GetVenda(int id);

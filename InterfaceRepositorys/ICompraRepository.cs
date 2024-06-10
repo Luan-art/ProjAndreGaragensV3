@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RepositoriesDapper
+namespace InterfaceRepositorys
 {
-    public interface IPixRepositoryDapper
+    public interface ICompraRepository
     {
-        bool InserirPix(Pix pix);
-        Pix GetPix(string id);
+        bool InserirCompra(Compra compra);
+        Compra GetCompra(int id);
     }
 }

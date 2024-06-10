@@ -5,11 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RepositoriesADO
+namespace InterfaceRepositorys
 {
-    public interface ICompraRepositoryADO
+    public interface ICargoRepository
     {
-        bool InserirCompra(Compra compra);
-        Compra GetCompra(int id);
+        public bool InserirCargo(Cargo cargo);
+
+        Cargo GetCargo(int? v);
     }
 }

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RepositoriesDapper
+namespace InterfaceRepositorys
 {
-    public interface IFuncionarioRepositoryDapper
+    public interface IFuncionarioRepository
     {
         bool InjetarFuncionario(Funcionario funcionario);
         Funcionario GetFuncionario(string documento);

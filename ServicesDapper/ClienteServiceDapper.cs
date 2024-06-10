@@ -6,9 +6,9 @@ namespace ServicesDapper
 {
     public class ClienteServiceDapper
     {
-        private readonly IClienteRepositoryDapper _clienteRepository;
+        private readonly IClienteRepository _clienteRepository;
 
-        public ClienteServiceDapper(IClienteRepositoryDapper clienteRepository)
+        public ClienteServiceDapper(IClienteRepository clienteRepository)
         {
             _clienteRepository = clienteRepository;
         }

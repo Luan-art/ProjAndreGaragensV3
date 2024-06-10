@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RepositoriesADO
+namespace InterfaceRepositorys
 {
-    public interface IEnderecoRepositoryADO
+    public interface IEnderecoRepository
     {
         bool InserirEndereco(Endereco enderecos);
         Endereco GetEnd(int id);

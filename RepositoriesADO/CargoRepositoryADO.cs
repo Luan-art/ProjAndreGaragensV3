@@ -1,19 +1,15 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using InterfaceRepositorys;
+using Microsoft.Data.SqlClient;
 using Models;
 using System;
 
 namespace RepositoriesADO
 {
-    public class CargoRepositoryADO : ICargoRepositoryADO
+    public class CargoRepositoryADO : ICargoRepository
     {
         private string strConn = "Data Source=127.0.0.1; Initial Catalog=DBAndGarEntV2; User Id=sa; Password=SqlServer2019!; TrustServerCertificate=Yes;";
 
         public Cargo GetCargo(int? v)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Carro GetCargo(int id)
         {
             throw new NotImplementedException();
         }
@@ -41,9 +37,6 @@ namespace RepositoriesADO
             return result;
         }
 
-        Cargo ICargoRepositoryADO.GetCargo(int id)
-        {
-            throw new NotImplementedException();
-        }
+  
     }
 }

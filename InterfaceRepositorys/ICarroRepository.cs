@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RepositoriesADO.InterfaceRepositoryADO
+namespace InterfaceRepositorys
 {
-    public interface ICarroRepositoryADO
+    public interface ICarroRepository
     {
         bool InserirCarro(Carro carros);
         Carro GetCarro(string placa);

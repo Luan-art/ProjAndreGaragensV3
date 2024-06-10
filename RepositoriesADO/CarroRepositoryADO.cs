@@ -1,10 +1,10 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using InterfaceRepositorys;
+using Microsoft.Data.SqlClient;
 using Models;
-using RepositoriesADO.InterfaceRepositoryADO;
 
 namespace RepositoriesADO
 {
-    public class CarroRepositoryADO : ICarroRepositoryADO
+    public class CarroRepositoryADO : ICarroRepository
     {
 
         private string strConn = "Data Source=127.0.0.1; Initial Catalog=DBAndGarEntV2; User Id=sa; Password=SqlServer2019!; TrustServerCertificate=Yes;";

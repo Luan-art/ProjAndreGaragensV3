@@ -1,11 +1,12 @@
 ﻿using Dapper;
+using InterfaceRepositorys;
 using Microsoft.Data.SqlClient;
 using Models;
 using System;
 
 namespace RepositoriesDapper
 {
-    public class CarroRepositoryDapper : ICarroRepositoryDapper
+    public class CarroRepositoryDapper : ICarroRepository
     {
         private string strConn = "Data Source=127.0.0.1; Initial Catalog=DBAndGarEntV2; User Id=sa; Password=SqlServer2019!; TrustServerCertificate=Yes;";
 

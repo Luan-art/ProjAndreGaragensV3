@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RepositoriesDapper
+namespace InterfaceRepositorys
 {
-    public interface IPagamentoRepositoryDapper
+    public interface IPagamentoRepository
     {
         bool InjetarPagamento(Pagamento pagamento);
         Pagamento GetPagamento(int id);

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RepositoriesDapper
+namespace InterfaceRepositorys
 {
-    public interface ICartaoRepositoryDapper
+    public interface ICartaoRepository
     {
         bool InserirCartoes(Cartao cartoes);
         Cartao GetCartao(string numeroCartao);

@@ -7,7 +7,7 @@ namespace ServicesDapper
 {
     public class CargoServiceDapper
     {
-        private readonly ICargoRepositoryDapper _cargoRepository;
+        private readonly ICargoRepository _cargoRepository;
 
         public CargoServiceDapper()
         {

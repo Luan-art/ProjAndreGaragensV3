@@ -1,11 +1,12 @@
 ﻿using Dapper;
+using InterfaceRepositorys;
 using Microsoft.Data.SqlClient;
 using Models;
 using System;
 
 namespace RepositoriesDapper
 {
-    public class FuncionarioRepositoryDapper : IFuncionarioRepositoryDapper
+    public class FuncionarioRepositoryDapper : IFuncionarioRepository
     {
         private string strConn = "Data Source=127.0.0.1; Initial Catalog=DBAndGarEntV2; User Id=sa; Password=SqlServer2019!; TrustServerCertificate=Yes;";
 

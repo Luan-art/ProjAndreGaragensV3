@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using InterfaceRepositorys;
 using Microsoft.Data.SqlClient;
 using Models;
 using System;
@@ -6,7 +7,7 @@ using System.Collections.Generic;
 
 namespace RepositoriesADO
 {
-    public class TipoPixRepositoryADO : ITipoPixRepositoryADO
+    public class TipoPixRepositoryADO : ITipoPixRepository
     {
         private string strConn = "Data Source=127.0.0.1; Initial Catalog=DBAndGarEntV2; User Id=sa; Password=SqlServer2019!; TrustServerCertificate=Yes;";
 

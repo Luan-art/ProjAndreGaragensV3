@@ -7,9 +7,9 @@ namespace ServicesDapper
 {
     public class CartaoServiceDapper
     {
-        private readonly ICartaoRepositoryDapper _cartaoRepository;
+        private readonly ICartaoRepository _cartaoRepository;
 
-        public CartaoServiceDapper(ICartaoRepositoryDapper cartaoRepository)
+        public CartaoServiceDapper(ICartaoRepository cartaoRepository)
         {
             _cartaoRepository = cartaoRepository;
         }

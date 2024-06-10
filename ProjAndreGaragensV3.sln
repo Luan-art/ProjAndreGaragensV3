@@ -25,13 +25,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjAndreVeiculosV3_Enderec
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjAndreVeiculosV3_Pagamento", "ProjAndreVeiculosV3_Pagamento\ProjAndreVeiculosV3_Pagamento.csproj", "{27F0E1F1-F918-4B9E-BA4E-DAD383ACF1F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoriesDapper", "RepositoriesDapper\RepositoriesDapper.csproj", "{6EDE9E21-9D88-4451-8F47-F53408616EC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoriesDapper", "RepositoriesDapper\RepositoriesDapper.csproj", "{6EDE9E21-9D88-4451-8F47-F53408616EC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicesDapper", "ServicesDapper\ServicesDapper.csproj", "{FA9CDAE2-3E0D-4890-AFAA-4BB1DB05F4D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServicesDapper", "ServicesDapper\ServicesDapper.csproj", "{FA9CDAE2-3E0D-4890-AFAA-4BB1DB05F4D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoriesADO", "RepositoriesADO\RepositoriesADO.csproj", "{20F51221-0E05-4D56-AB27-0ED79EACD928}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoriesADO", "RepositoriesADO\RepositoriesADO.csproj", "{20F51221-0E05-4D56-AB27-0ED79EACD928}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicesADO", "ServicesADO\ServicesADO.csproj", "{D7363E23-8F5A-4F55-A548-E24DD30496D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServicesADO", "ServicesADO\ServicesADO.csproj", "{D7363E23-8F5A-4F55-A548-E24DD30496D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceRepositorys", "InterfaceRepositorys\InterfaceRepositorys.csproj", "{E46986DC-4D07-4880-8B4C-5F5E99612DE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +101,10 @@ Global
 		{D7363E23-8F5A-4F55-A548-E24DD30496D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7363E23-8F5A-4F55-A548-E24DD30496D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7363E23-8F5A-4F55-A548-E24DD30496D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E46986DC-4D07-4880-8B4C-5F5E99612DE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E46986DC-4D07-4880-8B4C-5F5E99612DE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E46986DC-4D07-4880-8B4C-5F5E99612DE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E46986DC-4D07-4880-8B4C-5F5E99612DE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

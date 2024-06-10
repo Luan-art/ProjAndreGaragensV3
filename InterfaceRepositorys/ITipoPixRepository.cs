@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RepositoriesDapper
+namespace InterfaceRepositorys
 {
-    public interface ITipoPixRepositoryDapper
+    public interface ITipoPixRepository
     {
         bool InserirTipoPix(TipoPix tiposPix);
         TipoPix GetTipoPix(int id);

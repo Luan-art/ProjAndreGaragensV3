@@ -7,7 +7,7 @@ namespace ServicesDapper
 {
     public class CarroServiceDapper
     {
-        private readonly ICarroRepositoryDapper _carroRepository;
+        private readonly ICarroRepository _carroRepository;
 
         public CarroServiceDapper()
         {

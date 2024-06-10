@@ -7,23 +7,31 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjAndreVeiculosV3", "Proj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{08155B36-6868-44F9-899E-A5FC4EC98F9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjAndreVeiculosV3_Carro", "ProjAndreVeiculosV3_Carro\ProjAndreVeiculosV3_Carro.csproj", "{8B53173E-FAE9-45B6-B7C3-C1BA41E8C672}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjAndreVeiculosV3_Carro", "ProjAndreVeiculosV3_Carro\ProjAndreVeiculosV3_Carro.csproj", "{8B53173E-FAE9-45B6-B7C3-C1BA41E8C672}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjAndreVeiculosV3_Servico", "ProjAndreVeiculosV3_Servico\ProjAndreVeiculosV3_Servico.csproj", "{C652E687-A534-481A-9677-8D272CEBADDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjAndreVeiculosV3_Servico", "ProjAndreVeiculosV3_Servico\ProjAndreVeiculosV3_Servico.csproj", "{C652E687-A534-481A-9677-8D272CEBADDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjAndreVeiculosV3_CarroServico", "ProjAndreVeiculosV3_CarroServico\ProjAndreVeiculosV3_CarroServico.csproj", "{72DD6F54-ACE8-4131-B7FB-1FB3B67F342B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjAndreVeiculosV3_CarroServico", "ProjAndreVeiculosV3_CarroServico\ProjAndreVeiculosV3_CarroServico.csproj", "{72DD6F54-ACE8-4131-B7FB-1FB3B67F342B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjAndreVeiculosV3_Compra", "ProjAndreGaragensV3_Compra\ProjAndreVeiculosV3_Compra.csproj", "{086A8A58-D1BB-46F8-9523-08084E907A29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjAndreVeiculosV3_Compra", "ProjAndreGaragensV3_Compra\ProjAndreVeiculosV3_Compra.csproj", "{086A8A58-D1BB-46F8-9523-08084E907A29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjAndreVeiculosV3_Venda", "ProjAndreVeiculosV3_Venda\ProjAndreVeiculosV3_Venda.csproj", "{3ED54F4A-E852-48C6-B0F6-5B5691A42F79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjAndreVeiculosV3_Venda", "ProjAndreVeiculosV3_Venda\ProjAndreVeiculosV3_Venda.csproj", "{3ED54F4A-E852-48C6-B0F6-5B5691A42F79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjAndreVeiculosV3_Funcionario", "ProjAndreVeiculosV3_Funcionario\ProjAndreVeiculosV3_Funcionario.csproj", "{79852EB5-A5E8-4653-ACF8-FBED44C4BEA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjAndreVeiculosV3_Funcionario", "ProjAndreVeiculosV3_Funcionario\ProjAndreVeiculosV3_Funcionario.csproj", "{79852EB5-A5E8-4653-ACF8-FBED44C4BEA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjAndreVeiculosV3_Cliente", "ProjAndreVeiculosV3_Cliente\ProjAndreVeiculosV3_Cliente.csproj", "{68529A28-8A39-4F7C-B640-4B40E16EAEDF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjAndreVeiculosV3_Cliente", "ProjAndreVeiculosV3_Cliente\ProjAndreVeiculosV3_Cliente.csproj", "{68529A28-8A39-4F7C-B640-4B40E16EAEDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjAndreVeiculosV3_Endereco", "ProjAndreVeiculosV3_Endereco\ProjAndreVeiculosV3_Endereco.csproj", "{653F2034-4F2D-42DE-910E-053AC362D198}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjAndreVeiculosV3_Endereco", "ProjAndreVeiculosV3_Endereco\ProjAndreVeiculosV3_Endereco.csproj", "{653F2034-4F2D-42DE-910E-053AC362D198}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjAndreVeiculosV3_Pagamento", "ProjAndreVeiculosV3_Pagamento\ProjAndreVeiculosV3_Pagamento.csproj", "{27F0E1F1-F918-4B9E-BA4E-DAD383ACF1F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjAndreVeiculosV3_Pagamento", "ProjAndreVeiculosV3_Pagamento\ProjAndreVeiculosV3_Pagamento.csproj", "{27F0E1F1-F918-4B9E-BA4E-DAD383ACF1F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoriesDapper", "RepositoriesDapper\RepositoriesDapper.csproj", "{6EDE9E21-9D88-4451-8F47-F53408616EC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicesDapper", "ServicesDapper\ServicesDapper.csproj", "{FA9CDAE2-3E0D-4890-AFAA-4BB1DB05F4D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoriesADO", "RepositoriesADO\RepositoriesADO.csproj", "{20F51221-0E05-4D56-AB27-0ED79EACD928}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicesADO", "ServicesADO\ServicesADO.csproj", "{D7363E23-8F5A-4F55-A548-E24DD30496D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +83,22 @@ Global
 		{27F0E1F1-F918-4B9E-BA4E-DAD383ACF1F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27F0E1F1-F918-4B9E-BA4E-DAD383ACF1F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27F0E1F1-F918-4B9E-BA4E-DAD383ACF1F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EDE9E21-9D88-4451-8F47-F53408616EC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EDE9E21-9D88-4451-8F47-F53408616EC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EDE9E21-9D88-4451-8F47-F53408616EC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EDE9E21-9D88-4451-8F47-F53408616EC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA9CDAE2-3E0D-4890-AFAA-4BB1DB05F4D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA9CDAE2-3E0D-4890-AFAA-4BB1DB05F4D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA9CDAE2-3E0D-4890-AFAA-4BB1DB05F4D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA9CDAE2-3E0D-4890-AFAA-4BB1DB05F4D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20F51221-0E05-4D56-AB27-0ED79EACD928}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20F51221-0E05-4D56-AB27-0ED79EACD928}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20F51221-0E05-4D56-AB27-0ED79EACD928}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20F51221-0E05-4D56-AB27-0ED79EACD928}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7363E23-8F5A-4F55-A548-E24DD30496D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7363E23-8F5A-4F55-A548-E24DD30496D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7363E23-8F5A-4F55-A548-E24DD30496D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7363E23-8F5A-4F55-A548-E24DD30496D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

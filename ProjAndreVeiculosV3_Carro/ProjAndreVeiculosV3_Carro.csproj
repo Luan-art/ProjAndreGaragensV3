@@ -18,6 +18,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj" />
+    <ProjectReference Include="..\ServicesADO\ServicesADO.csproj" />
+    <ProjectReference Include="..\ServicesDapper\ServicesDapper.csproj" />
   </ItemGroup>
 
 </Project>

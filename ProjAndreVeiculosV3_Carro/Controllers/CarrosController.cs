@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Models;
 using ProjAndreVeiculosV3_Carro.Data;
+using ServicesADO;
+using ServicesDapper;
 
 namespace ProjAndreVeiculosV3_Carro.Controllers
 {
@@ -25,22 +27,35 @@ namespace ProjAndreVeiculosV3_Carro.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Carro>>> GetCarro()
         {
-          if (_context.Carro == null)
-          {
-              return NotFound();
-          }
+            if (_context.Carro == null)
+            {
+                return NotFound();
+            }
             return await _context.Carro.ToListAsync();
         }
 
         // GET: api/Carros/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Carro>> GetCarro(string id)
+        [HttpGet("{tipoTecnologia}/{id}")]
+        public async Task<ActionResult<Carro>> GetCarro(string id, string tipoTecnologia)
         {
-          if (_context.Carro == null)
-          {
-              return NotFound();
-          }
-            var carro = await _context.Carro.FindAsync(id);
+            if (_context.Carro == null)
+            {
+                return NotFound();
+            }
+
+            Carro carro = new Carro();
+            if(tipoTecnologia == "ef")
+            {
+                carro = await _context.Carro.FindAsync(id);
+
+            } else if(tipoTecnologia == "dapper")
+            {
+                carro = new CarroServiceDapper().GetCarro(id);
+            }
+            else if(tipoTecnologia == "ado")
+            {
+                carro = new CarroServiceADO().GetCarro(id);
+            }
 
             if (carro == null)
             {
@@ -86,10 +101,10 @@ namespace ProjAndreVeiculosV3_Carro.Controllers
         [HttpPost]
         public async Task<ActionResult<Carro>> PostCarro(Carro carro)
         {
-          if (_context.Carro == null)
-          {
-              return Problem("Entity set 'ProjAndreVeiculosV3_CarroContext.Carro'  is null.");
-          }
+            if (_context.Carro == null)
+            {
+                return Problem("Entity set 'ProjAndreVeiculosV3_CarroContext.Carro'  is null.");
+            }
             _context.Carro.Add(carro);
             try
             {

@@ -8,7 +8,7 @@ namespace RepositoriesADO
 {
     public class TipoPixRepositoryADO : ITipoPixRepositoryADO
     {
-        private string strConn = "Data Source=127.0.0.1; Initial Catalog=DBAndresGaragem; User Id=sa; Password=SqlServer2019!; TrustServerCertificate=Yes;";
+        private string strConn = "Data Source=127.0.0.1; Initial Catalog=DBAndGarEntV2; User Id=sa; Password=SqlServer2019!; TrustServerCertificate=Yes;";
 
         public TipoPix GetTipoPix(int id)
         {

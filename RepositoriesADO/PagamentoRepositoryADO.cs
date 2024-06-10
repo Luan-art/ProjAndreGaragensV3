@@ -6,7 +6,7 @@ namespace RepositoriesADO
 {
     public class PagamentoRepositoryADO : IPagamentoRepositoryADO
     {
-        private string strConn = "Data Source=127.0.0.1; Initial Catalog=DBAndresGaragem; User Id=sa; Password=SqlServer2019!; TrustServerCertificate=Yes;";
+        private string strConn = "Data Source=127.0.0.1; Initial Catalog=DBAndGarEntV2; User Id=sa; Password=SqlServer2019!; TrustServerCertificate=Yes;";
 
         public Pagamento GetPagamento(int id)
         {

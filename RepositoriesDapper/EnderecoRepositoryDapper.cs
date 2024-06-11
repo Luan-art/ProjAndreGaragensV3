@@ -13,7 +13,23 @@ namespace RepositoriesDapper
 
         public Endereco GetEnd(int id)
         {
-            throw new NotImplementedException();
+            Endereco end = new Endereco();
+            string sql = "SELECT Logradouro , CEP, Bairro, Complemento, UF, Localidade FROM Endereco WHERE id = @Id";
+
+            try
+            {
+                using (var db = new SqlConnection(strConn))
+                {
+                    db.Open();
+                    end = db.QuerySingleOrDefault<Endereco>(sql, new { Id = id });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return end;
         }
 
         public bool InserirEndereco(Endereco enderecos)

@@ -1,14 +1,15 @@
 ﻿using Models;
 using RepositoriesDapper;
 using System;
+using InterfaceRepositorys;
 
 namespace ServicesDapper
 {
     public class VendaServiceDapper
     {
-        private readonly IVendaRepositoryDapper _vendaRepository;
+        private readonly IVendaRepository _vendaRepository;
 
-        public VendaServiceDapper(IVendaRepositoryDapper vendaRepository)
+        public VendaServiceDapper(IVendaRepository vendaRepository)
         {
             _vendaRepository = vendaRepository;
         }

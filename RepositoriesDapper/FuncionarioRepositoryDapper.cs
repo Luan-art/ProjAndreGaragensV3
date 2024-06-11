@@ -12,14 +12,30 @@ namespace RepositoriesDapper
 
         public Funcionario GetFuncionario(string documento)
         {
-            throw new NotImplementedException();
+            Funcionario end = new Funcionario();
+            string sql = "SELECT Documento , CargoId, ValorComissao, Comissao, Nome, DataNascimento, ENdereco, Telefone, Email FROM Pessoa WHERE Documento = @Documento";
+
+            try
+            {
+                using (var db = new SqlConnection(strConn))
+                {
+                    db.Open();
+                    end = db.QuerySingleOrDefault<Funcionario>(sql, new { Documento = documento });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return end;
         }
 
         public bool InjetarFuncionario(Funcionario funcionario)
         {
             bool result = false;
-            string sql = "INSERT INTO Funcionario ( Documento, CargoId, ValorComissao, Comissao, Nome, DataNascimento, EnderecoID, Telefone, Email) " +
-                "VALUES (  @Documento, @CargoId, @ValorComissao, @Comissao, @Nome, @DataNascimento, @EnderecoID, @Telefone, @Email);";
+            string sql = "INSERT INTO Pessoa ( Documento, CargoId, ValorComissao, Comissao, Nome, DataNascimento, Endereco, Telefone, Email, PessoaType) " +
+                "VALUES (  @Documento, @CargoId, @ValorComissao, @Comissao, @Nome, @DataNascimento, @Endereco, @Telefone, @Email, @PessoaType);";
             try
             {
                 using (var db = new SqlConnection(strConn))
@@ -36,7 +52,8 @@ namespace RepositoriesDapper
                         DataNascimento = funcionario.DataNascimento,
                         EnderecoId = funcionario.Endereco.Id,
                         Telefone = funcionario.Telefone,
-                        Email = funcionario.Email
+                        Email = funcionario.Email,
+                        PessoaType = "Funcionario"
                     });
 
                 }

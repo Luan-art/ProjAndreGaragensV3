@@ -2,19 +2,20 @@
 using RepositoriesADO;
 using RepositoriesDapper;
 using System;
+using InterfaceRepositorys;
 
 namespace ServicesADO
 {
     public class ClienteServiceADO
     {
-        private readonly IClienteRepositoryADO _clienteRepository;
+        private readonly IClienteRepository _clienteRepository;
 
-        public ClienteServiceADO(IClienteRepositoryADO clienteRepository)
+        public ClienteServiceADO(IClienteRepository clienteRepository)
         {
             _clienteRepository = clienteRepository;
         }
 
-        public bool InserirCliente(Clientes cliente)
+        public bool InserirCliente(Cliente cliente)
         {
             try
             {
@@ -27,6 +28,6 @@ namespace ServicesADO
             }
         }
 
-        public Clientes GetCliente(string documento) => _clienteRepository.GetCliente(documento);
+        public Cliente GetCliente(string documento) => _clienteRepository.GetCliente(documento);
     }
 }

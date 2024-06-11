@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using InterfaceRepositorys;
+using Models;
 using RepositoriesADO;
 using RepositoriesDapper;
 using System;
@@ -7,9 +8,9 @@ namespace ServicesADO
 {
     public class CompraServiceADO
     {
-        private readonly ICompraRepositoryADO _compraRepository;
+        private readonly ICompraRepository _compraRepository;
 
-        public CompraServiceADO(ICompraRepositoryADO compraRepository)
+        public CompraServiceADO(ICompraRepository compraRepository)
         {
             _compraRepository = compraRepository;
         }

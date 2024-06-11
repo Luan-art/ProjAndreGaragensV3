@@ -31,32 +31,35 @@ namespace ProjAndreVeiculosV3_Cliente.Controllers
 
         // GET: api/Clientes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Clientes>>> GetCliente()
+        public async Task<ActionResult<IEnumerable<Cliente>>> GetCliente()
         {
-            if (_context.Clientes == null)
+            if (_context.Cliente == null)
             {
                 return NotFound();
             }
 
-            var clientes = await _context.Clientes.ToListAsync();
-            foreach (Clientes cliente in clientes)
+            var clientes = await _context.Cliente.ToListAsync();
+
+
+            foreach (Cliente cliente in clientes)
             {
                 Endereco endereco = await _context.Endereco.Where(e => cliente.Endereco.Id == e.Id).FirstAsync();
                 cliente.Endereco = endereco;
             }
+           
             return clientes;
         }
 
 
         // GET: api/Clientes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Clientes>> GetCliente(string id)
+        public async Task<ActionResult<Cliente>> GetCliente(string id)
         {
-            if (_context.Clientes == null)
+            if (_context.Cliente == null)
             {
                 return NotFound();
             }
-            var cliente = await _context.Clientes.FindAsync(id);
+            var cliente = await _context.Cliente.FindAsync(id);
 
             if (cliente == null)
             {
@@ -69,7 +72,7 @@ namespace ProjAndreVeiculosV3_Cliente.Controllers
         // PUT: api/Clientes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCliente(string id, Clientes cliente)
+        public async Task<IActionResult> PutCliente(string id, Cliente cliente)
         {
             if (id != cliente.Documento)
             {
@@ -99,17 +102,17 @@ namespace ProjAndreVeiculosV3_Cliente.Controllers
 
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         // POST: api/Clientes/{cep}
-        [HttpPost("{cep}")]
-        public async Task<ActionResult<Clientes>> PostCliente(string cep, ClienteDTO clienteDTO)
+     /*   [HttpPost("{cep}")]
+        public async Task<ActionResult<Cliente>> PostCliente(string cep, ClienteDTO clienteDTO)
         {
             var enderecoId = await CriarEnderecoRemotamente(cep);
 
             if (enderecoId != null)
             {
-                Clientes cliente = new Clientes(clienteDTO);
-                cliente.Endereco = await _context.Endereco.FindAsync(enderecoId);
+              //  Cliente cliente = new Cliente(clienteDTO);
+              //  cliente.Endereco = await _context.Endereco.FindAsync(enderecoId);
 
-                _context.Clientes.Add(cliente);
+                _context.Cliente.Add(cliente);
                 await _context.SaveChangesAsync();
 
                 return CreatedAtAction("GetCliente", new { id = cliente.Documento }, cliente);
@@ -118,7 +121,7 @@ namespace ProjAndreVeiculosV3_Cliente.Controllers
             {
                 return BadRequest("Erro ao criar endereço pelo CEP.");
             }
-        }
+        }*/
 
         private async Task<int?> CriarEnderecoRemotamente(string cep)
         {
@@ -145,17 +148,17 @@ namespace ProjAndreVeiculosV3_Cliente.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCliente(string id)
         {
-            if (_context.Clientes == null)
+            if (_context.Cliente == null)
             {
                 return NotFound();
             }
-            var cliente = await _context.Clientes.FindAsync(id);
+            var cliente = await _context.Cliente.FindAsync(id);
             if (cliente == null)
             {
                 return NotFound();
             }
 
-            _context.Clientes.Remove(cliente);
+            _context.Cliente.Remove(cliente);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -163,7 +166,7 @@ namespace ProjAndreVeiculosV3_Cliente.Controllers
 
         private bool ClienteExists(string id)
         {
-            return (_context.Clientes?.Any(e => e.Documento == id)).GetValueOrDefault();
+            return (_context.Cliente?.Any(e => e.Documento == id)).GetValueOrDefault();
         }
     }
 }

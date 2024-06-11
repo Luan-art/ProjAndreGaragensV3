@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using InterfaceRepositorys;
+using Models;
 using RepositoriesADO;
 using RepositoriesDapper;
 using System;
@@ -8,9 +9,9 @@ namespace ServicesADO
 {
     public class EnderecoServiceADO
     {
-        private readonly IEnderecoRepositoryADO _enderecoRepository;
+        private readonly IEnderecoRepository _enderecoRepository;
 
-        public EnderecoServiceADO(IEnderecoRepositoryADO enderecoRepository)
+        public EnderecoServiceADO(IEnderecoRepository enderecoRepository)
         {
             _enderecoRepository = enderecoRepository;
         }

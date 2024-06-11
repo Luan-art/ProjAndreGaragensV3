@@ -1,6 +1,7 @@
 ﻿using Models;
 using RepositoriesDapper;
 using System;
+using InterfaceRepositorys;
 
 namespace ServicesDapper
 {
@@ -13,7 +14,7 @@ namespace ServicesDapper
             _clienteRepository = clienteRepository;
         }
 
-        public bool InserirCliente(Clientes cliente)
+        public bool InserirCliente(Cliente cliente)
         {
             try
             {
@@ -26,6 +27,6 @@ namespace ServicesDapper
             }
         }
 
-        public Clientes GetCliente(string documento) => _clienteRepository.GetCliente(documento);
+        public Cliente GetCliente(string documento) => _clienteRepository.GetCliente(documento);
     }
 }

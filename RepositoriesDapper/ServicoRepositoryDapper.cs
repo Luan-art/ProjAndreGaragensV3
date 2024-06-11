@@ -13,7 +13,23 @@ namespace RepositoriesDapper
 
         public Servico GetService(int id)
         {
-            throw new NotImplementedException();
+            Servico pag = new Servico();
+            string sql = "SELECT Descricao FROM Servico WHERE Id = @Id";
+
+            try
+            {
+                using (var db = new SqlConnection(strConn))
+                {
+                    db.Open();
+                    pag = db.QuerySingleOrDefault<Servico>(sql, new { Id = id });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return pag;
         }
 
         public bool InserirServicos(Servico servicos)

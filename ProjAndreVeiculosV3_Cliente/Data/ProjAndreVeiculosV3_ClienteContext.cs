@@ -13,21 +13,16 @@ namespace ProjAndreVeiculosV3_Cliente.Data
             : base(options)
         {
         }
-
-        public DbSet<Clientes> Clientes { get; set; }
-        public DbSet<Funcionario> Funcionarios { get; set; }
+        public DbSet<Pessoa> Pessoa { get; set; }
+        public DbSet<Cliente> Cliente { get; set; }
         public DbSet<Endereco> Endereco { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Pessoas>()
-                .ToTable("Pessoas")
-                .HasDiscriminator<string>("PessoaType")
-                .HasValue<Pessoas>("Pessoas")
-                .HasValue<Funcionario>("Funcionarios")
-                .HasValue<Clientes>("Clientes");
-
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Pessoa>()
+                .HasKey(p => p.Documento);
         }
     }
 }
+

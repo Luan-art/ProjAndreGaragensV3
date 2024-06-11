@@ -12,7 +12,23 @@ namespace RepositoriesDapper
 
         public Cargo GetCargo(int? v)
         {
-            throw new NotImplementedException();
+            Cargo cargo = new Cargo();
+            string sql = "SELECT Descricao WHERE id = @Id";
+
+            try
+            {
+                using (var db = new SqlConnection(strConn))
+                {
+                    db.Open();
+                    cargo = db.QuerySingleOrDefault<Cargo>(sql, new { Id = v });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return cargo;
         }
 
         public bool InserirCargo(Cargo cargo)

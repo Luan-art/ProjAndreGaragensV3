@@ -12,7 +12,23 @@ namespace RepositoriesDapper
 
         public Compra GetCompra(int id)
         {
-            throw new NotImplementedException();
+            Compra compra = new Compra();
+            string sql = "SELECT CarroPlaca , Preco, DataCompra FROM Compra WHERE id = @Id";
+
+            try
+            {
+                using (var db = new SqlConnection(strConn))
+                {
+                    db.Open();
+                    compra = db.QuerySingleOrDefault<Compra>(sql, new { Id = id });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return compra;
         }
 
         public bool InserirCompra(Compra compra)

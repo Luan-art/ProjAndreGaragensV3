@@ -3,14 +3,16 @@ using RepositoriesADO;
 using RepositoriesDapper;
 using System;
 using System.Collections.Generic;
+using InterfaceRepositorys;
+
 
 namespace ServicesADO
 {
     public class CartaoServiceADO
     {
-        private readonly ICartaoRepositoryADO _cartaoRepository;
+        private readonly ICartaoRepository _cartaoRepository;
 
-        public CartaoServiceADO(ICartaoRepositoryADO cartaoRepository)
+        public CartaoServiceADO(ICartaoRepository cartaoRepository)
         {
             _cartaoRepository = cartaoRepository;
         }

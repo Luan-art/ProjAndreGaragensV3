@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using InterfaceRepositorys;
+using Models;
 using RepositoriesDapper;
 using System;
 
@@ -6,9 +7,9 @@ namespace ServicesDapper
 {
     public class CompraServiceDapper
     {
-        private readonly ICompraRepositoryDapper _compraRepository;
+        private readonly ICompraRepository _compraRepository;
 
-        public CompraServiceDapper(ICompraRepositoryDapper compraRepository)
+        public CompraServiceDapper(ICompraRepository compraRepository)
         {
             _compraRepository = compraRepository;
         }

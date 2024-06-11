@@ -1,6 +1,5 @@
 ﻿using Models;
-using RepositoriesADO;
-using RepositoriesDapper;
+using InterfaceRepositorys;
 using System;
 using System.Collections.Generic;
 
@@ -8,9 +7,9 @@ namespace ServicesADO
 {
     public class ServicoServiceADO
     {
-        private readonly IServicoRepositoryADO _servicoRepository;
+        private readonly IServicoRepository _servicoRepository;
 
-        public ServicoServiceADO(IServicoRepositoryADO servicoRepository)
+        public ServicoServiceADO(IServicoRepository servicoRepository)
         {
             _servicoRepository = servicoRepository;
         }

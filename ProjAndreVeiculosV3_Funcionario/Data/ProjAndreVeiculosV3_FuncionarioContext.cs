@@ -14,20 +14,9 @@ namespace ProjAndreVeiculosV3_Funcionario.Data
         {
         }
 
-        public DbSet<Funcionario> Funcionarios { get; set; }
+        public DbSet<Funcionario> Funcionario { get; set; }
         public DbSet<Endereco> Endereco { get; set; }
         public DbSet<Cargo> Cargo { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Pessoas>()
-                .ToTable("Pessoas")
-                .HasDiscriminator<string>("PessoaType")
-                .HasValue<Pessoas>("Pessoas")
-                .HasValue<Clientes>("Clientes")
-                .HasValue<Funcionario>("Funcionarios");
-
-            base.OnModelCreating(modelBuilder);
-        }
     }
 }

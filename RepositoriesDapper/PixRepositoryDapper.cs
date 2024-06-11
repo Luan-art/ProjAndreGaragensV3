@@ -12,7 +12,23 @@ namespace RepositoriesDapper
 
         public Pix GetPix(string id)
         {
-            throw new NotImplementedException();
+            Pix pag = new Pix();
+            string sql = "SELECT TipoId, ChavePix FROM Pix WHERE Id = @Id";
+
+            try
+            {
+                using (var db = new SqlConnection(strConn))
+                {
+                    db.Open();
+                    pag = db.QuerySingleOrDefault<Pix>(sql, new { Id = id });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return pag;
         }
 
         public bool InserirPix(Pix pix)

@@ -1,15 +1,15 @@
 ﻿using Models;
 using RepositoriesADO;
-using RepositoriesDapper;
+using InterfaceRepositorys;
 using System;
 
 namespace ServicesADO
 {
     public class PixServiceADO
     {
-        private readonly IPixRepositoryADO _pixRepository;
+        private readonly IPixRepository _pixRepository;
 
-        public PixServiceADO(IPixRepositoryADO pixRepository)
+        public PixServiceADO(IPixRepository pixRepository)
         {
             _pixRepository = pixRepository;
         }

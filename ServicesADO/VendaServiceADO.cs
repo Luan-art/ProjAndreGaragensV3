@@ -2,14 +2,15 @@
 using RepositoriesADO;
 using RepositoriesDapper;
 using System;
+using InterfaceRepositorys;
 
 namespace ServicesADO
 {
     public class VendaServiceADO
     {
-        private readonly IVendaRepositoryADO _vendaRepository;
+        private readonly IVendaRepository _vendaRepository;
 
-        public VendaServiceADO(IVendaRepositoryADO vendaRepository)
+        public VendaServiceADO(IVendaRepository vendaRepository)
         {
             _vendaRepository = vendaRepository;
         }

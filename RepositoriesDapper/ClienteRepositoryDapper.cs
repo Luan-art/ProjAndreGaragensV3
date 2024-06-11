@@ -10,16 +10,32 @@ namespace RepositoriesDapper
     {
         private string strConn = "Data Source=127.0.0.1; Initial Catalog=DBAndGarEntV2; User Id=sa; Password=SqlServer2019!; TrustServerCertificate=Yes;";
 
-        public Clientes GetCliente(string documento)
+        public Cliente GetCliente(string documento)
         {
-            throw new NotImplementedException();
+            Cliente cliente = new Cliente();
+            string sql = "SELECT Documento, Renda, Nome, DataNascimento, Endereco, Telefone, Email FROM Pessoa WHERE Documento = @Documento";
+
+            try
+            {
+                using (var db = new SqlConnection(strConn))
+                {
+                    db.Open();
+                    cliente = db.QuerySingleOrDefault<Cliente>(sql, new { Documento = documento });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return cliente;
         }
 
-        public bool InserirCliente(Clientes cliente)
+        public bool InserirCliente(Cliente cliente)
         {
             bool result = false;
-            string sql = "INSERT INTO Cliente (Documento, Renda, Nome, DataNascimento, EnderecoID, Telefone, Email) " +
-                "VALUES (@Documento, @Renda, @Nome, @DataNascimento, @EnderecoID, @Telefone, @Email);";
+            string sql = "INSERT INTO Pessoa (Documento, Renda, Nome, DataNascimento, Endereco, Telefone, Email, PessoaType) " +
+                "VALUES (@Documento, @Renda, @Nome, @DataNascimento, @Endereco, @Telefone, @Email, PessoaType);";
             try
             {
                 using (var db = new SqlConnection(strConn))
@@ -32,9 +48,10 @@ namespace RepositoriesDapper
                         Renda = cliente.Renda,
                         Nome = cliente.Nome,
                         DataNascimento = cliente.DataNascimento,
-                        EnderecoId = cliente.Endereco.Id,
+                        Endereco = cliente.Endereco.Id,
                         Telefone = cliente.Telefone,
-                        Email = cliente.Email
+                        Email = cliente.Email,
+                        PessoaType = "Cliente"
                     });
 
                 }

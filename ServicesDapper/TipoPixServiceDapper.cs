@@ -2,14 +2,15 @@
 using RepositoriesDapper;
 using System;
 using System.Collections.Generic;
+using InterfaceRepositorys;
 
 namespace ServicesDapper
 {
     public class TipoPixServiceDapper
     {
-        private readonly ITipoPixRepositoryDapper _tipoPixRepository;
+        private readonly ITipoPixRepository _tipoPixRepository;
 
-        public TipoPixServiceDapper(ITipoPixRepositoryDapper tipoPixRepository)
+        public TipoPixServiceDapper(ITipoPixRepository tipoPixRepository)
         {
             _tipoPixRepository = tipoPixRepository;
         }

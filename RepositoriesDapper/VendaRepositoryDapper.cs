@@ -12,7 +12,23 @@ namespace RepositoriesDapper
 
         public Venda GetVenda(int id)
         {
-            throw new NotImplementedException();
+            Venda pag = new Venda();
+            string sql = "SELECT Carro , BoletoId, PixId, DataPagamento FROM Pagamento WHERE Id = @Id";
+
+            try
+            {
+                using (var db = new SqlConnection(strConn))
+                {
+                    db.Open();
+                    pag = db.QuerySingleOrDefault<Venda>(sql, new { Id = id });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return pag;
         }
 
         public bool InserirVenda(Venda venda)

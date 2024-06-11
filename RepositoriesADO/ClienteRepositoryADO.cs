@@ -9,12 +9,12 @@ namespace RepositoriesADO
     {
         private string strConn = "Data Source=127.0.0.1; Initial Catalog=DBAndGarEntV2; User Id=sa; Password=SqlServer2019!; TrustServerCertificate=Yes;";
 
-        public Clientes GetCliente(string documento)
+        public Cliente GetCliente(string documento)
         {
             throw new NotImplementedException();
         }
 
-        public bool InserirCliente(Clientes cliente)
+        public bool InserirCliente(Cliente cliente)
         {
             bool result = false;
             string sql = "INSERT INTO Cliente (Documento, Renda, Nome, DataNascimento, EnderecoID, Telefone, Email) " +

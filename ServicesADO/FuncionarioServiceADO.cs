@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using InterfaceRepositorys;
+using Models;
 using RepositoriesADO;
 using RepositoriesDapper;
 using System;
@@ -7,9 +8,9 @@ namespace ServicesADO
 {
     public class FuncionarioServiceADO
     {
-        private readonly IFuncionarioRepositoryADO _funcionarioRepository;
+        private readonly IFuncionarioRepository _funcionarioRepository;
 
-        public FuncionarioServiceADO(IFuncionarioRepositoryADO funcionarioRepository)
+        public FuncionarioServiceADO(IFuncionarioRepository funcionarioRepository)
         {
             _funcionarioRepository = funcionarioRepository;
         }

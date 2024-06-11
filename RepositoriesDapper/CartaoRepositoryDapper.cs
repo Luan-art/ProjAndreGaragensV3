@@ -12,7 +12,23 @@ namespace RepositoriesDapper
 
         public Cartao GetCartao(string numeroCartao)
         {
-            throw new NotImplementedException();
+            Cartao cartao = new Cartao();
+            string sql = "SELECT NumeroCartao, CodigoSeguranca, DataValidade, NomeCartao FROM cartao WHERE NumeroCartao = @nC";
+
+            try
+            {
+                using (var db = new SqlConnection(strConn))
+                {
+                    db.Open();
+                    cartao = db.QuerySingleOrDefault<Cartao>(sql, new { nC = numeroCartao });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return cartao;
         }
 
         public bool InserirCartoes(Cartao cartao)

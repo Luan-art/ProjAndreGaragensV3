@@ -1,14 +1,14 @@
 ﻿using Models;
-using RepositoriesDapper;
+using InterfaceRepositorys;
 using System;
 
 namespace ServicesDapper
 {
     public class PixServiceDapper
     {
-        private readonly IPixRepositoryDapper _pixRepository;
+        private readonly IPixRepository _pixRepository;
 
-        public PixServiceDapper(IPixRepositoryDapper pixRepository)
+        public PixServiceDapper(IPixRepository pixRepository)
         {
             _pixRepository = pixRepository;
         }

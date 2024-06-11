@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using InterfaceRepositorys;
+using Models;
 using RepositoriesADO;
 using RepositoriesDapper;
 using System;
@@ -8,7 +9,7 @@ namespace ServicesADO
 {
     public class BoletoServiceADO
     {
-        private IBoletoRepositoryADO _boletoRepository;
+        private IBoletoRepository _boletoRepository;
 
         public BoletoServiceADO()
         {

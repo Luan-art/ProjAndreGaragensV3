@@ -26,11 +26,11 @@ namespace ProjAndreVeiculosV3_Funcionario.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Funcionario>>> GetFuncionario()
         {
-          if (_context.Funcionarios == null)
+          if (_context.Funcionario == null)
           {
               return NotFound();
           }
-            var funcionarios = await _context.Funcionarios.ToListAsync();
+            var funcionarios = await _context.Funcionario.ToListAsync();
 
   
 
@@ -41,11 +41,11 @@ namespace ProjAndreVeiculosV3_Funcionario.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Funcionario>> GetFuncionario(string id)
         {
-          if (_context.Funcionarios == null)
+          if (_context.Funcionario == null)
           {
               return NotFound();
           }
-            var funcionario = await _context.Funcionarios
+            var funcionario = await _context.Funcionario
                   .Include(p => p.Cargo)
                   .Include(p => p.Endereco)
                   .FirstOrDefaultAsync(p => p.Documento == id);
@@ -94,7 +94,7 @@ namespace ProjAndreVeiculosV3_Funcionario.Controllers
         [HttpPost]
         public async Task<ActionResult<Funcionario>> PostFuncionario(FuncionarioDTO funcionarioDTO)
         {
-          if (_context.Funcionarios == null)
+          if (_context.Funcionario == null)
           {
               return Problem("Entity set 'ProjAndreVeiculosV3_FuncionarioContext.Funcionario'  is null.");
           }
@@ -104,7 +104,7 @@ namespace ProjAndreVeiculosV3_Funcionario.Controllers
             funcionario.Endereco = await _context.Endereco.FindAsync(funcionario.Endereco.Id);
 
 
-            _context.Funcionarios.Add(funcionario);
+            _context.Funcionario.Add(funcionario);
             try
             {
                 await _context.SaveChangesAsync();
@@ -135,7 +135,7 @@ namespace ProjAndreVeiculosV3_Funcionario.Controllers
                 funcionario.Endereco = await _context.Endereco.FindAsync(enderecoId);
                 funcionario.Cargo = await _context.Cargo.FindAsync(funcionario.Cargo.Id);
 
-                _context.Funcionarios.Add(funcionario);
+                _context.Funcionario.Add(funcionario);
                 await _context.SaveChangesAsync();
 
                 return CreatedAtAction("GetFuncionario", new { id = funcionario.Documento }, funcionario);
@@ -170,17 +170,17 @@ namespace ProjAndreVeiculosV3_Funcionario.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteFuncionario(string id)
         {
-            if (_context.Funcionarios == null)
+            if (_context.Funcionario == null)
             {
                 return NotFound();
             }
-            var funcionario = await _context.Funcionarios.FindAsync(id);
+            var funcionario = await _context.Funcionario.FindAsync(id);
             if (funcionario == null)
             {
                 return NotFound();
             }
 
-            _context.Funcionarios.Remove(funcionario);
+            _context.Funcionario.Remove(funcionario);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -188,7 +188,7 @@ namespace ProjAndreVeiculosV3_Funcionario.Controllers
 
         private bool FuncionarioExists(string id)
         {
-            return (_context.Funcionarios?.Any(e => e.Documento == id)).GetValueOrDefault();
+            return (_context.Funcionario?.Any(e => e.Documento == id)).GetValueOrDefault();
         }
     }
 }

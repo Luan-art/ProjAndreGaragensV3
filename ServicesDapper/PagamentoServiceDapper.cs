@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using InterfaceRepositorys;
+using Models;
 using RepositoriesDapper;
 using System;
 
@@ -6,9 +7,9 @@ namespace ServicesDapper
 {
     public class PagamentoServiceDapper
     {
-        private readonly IPagamentoRepositoryDapper _pagamentoRepository;
+        private readonly IPagamentoRepository _pagamentoRepository;
 
-        public PagamentoServiceDapper(IPagamentoRepositoryDapper pagamentoRepository)
+        public PagamentoServiceDapper(IPagamentoRepository pagamentoRepository)
         {
             _pagamentoRepository = pagamentoRepository;
         }

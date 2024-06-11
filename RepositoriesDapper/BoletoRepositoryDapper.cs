@@ -3,6 +3,7 @@ using InterfaceRepositorys;
 using Microsoft.Data.SqlClient;
 using Models;
 using System;
+using System.Numerics;
 
 namespace RepositoriesDapper
 {
@@ -12,7 +13,23 @@ namespace RepositoriesDapper
 
         public Boleto GetBoleto(string id)
         {
-            throw new NotImplementedException();
+            Boleto boleto = new Boleto();
+            string sql = "SELECT Numero, DataVencimento FROM Boleto WHERE id = @Id";
+
+            try
+            {
+                using (var db = new SqlConnection(strConn))
+                {
+                    db.Open();
+                    boleto = db.QuerySingleOrDefault<Boleto>(sql, new { Id = id });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return boleto;
         }
 
         public bool InserirBoleto(Boleto boleto)

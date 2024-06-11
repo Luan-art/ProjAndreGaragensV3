@@ -3,6 +3,7 @@ using InterfaceRepositorys;
 using Microsoft.Data.SqlClient;
 using Models;
 using System;
+using System.Numerics;
 
 namespace RepositoriesDapper
 {
@@ -12,7 +13,23 @@ namespace RepositoriesDapper
 
         public CarroServico GetCarroServico(int id)
         {
-            throw new NotImplementedException();
+            CarroServico carro = new CarroServico();
+            string sql = "SELECT Carro, Servico, Status FROM CarroServico WHERE id = @Id";
+
+            try
+            {
+                using (var db = new SqlConnection(strConn))
+                {
+                    db.Open();
+                    carro = db.QuerySingleOrDefault<CarroServico>(sql, new { Id = id });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return carro;
         }
 
         public bool InserirCarroServico(CarroServico carroServico)

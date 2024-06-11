@@ -13,7 +13,7 @@ namespace Models
         public Carro Carro { get; set; }
         public DateTime DataVenda { get; set; }
         public Decimal ValorVenda { get; set; }
-        public Clientes Cliente { get; set; }
+        public Cliente Cliente { get; set; }
         public Funcionario Funcionario { get; set; }
         public Pagamento Pagamento { get; set; }
 
@@ -26,7 +26,7 @@ namespace Models
             Carro = new Carro { Placa = DTO.CarroPlaca };
             DataVenda = DTO.DataVenda;
             ValorVenda = DTO.ValorVenda;
-            Cliente = new Clientes { Documento = DTO.ClienteDocumento };
+            Cliente = new Cliente { Documento = DTO.ClienteDocumento };
             Funcionario = new Funcionario { Documento = DTO.FuncionarioDocumento };
             Pagamento = new Pagamento { Id = DTO.PagamentoId };
         }

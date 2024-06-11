@@ -12,7 +12,7 @@ namespace RepositoriesDapper
 
         public Carro GetCarro(string placa)
         {
-            Carro carro = null;
+            Carro carro = new Carro();
             string sql = "SELECT Placa, Nome, AnoModelo, Cor, Vendido FROM Carro WHERE Placa = @Placa";
 
             try

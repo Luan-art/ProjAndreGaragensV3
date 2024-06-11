@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class Funcionario : Pessoas
+    public class Funcionario : Pessoa
     {
 
         public Cargo Cargo { get; set; }

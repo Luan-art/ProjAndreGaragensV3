@@ -1,6 +1,6 @@
 ﻿using Models;
 using RepositoriesADO;
-using RepositoriesDapper;
+using InterfaceRepositorys;
 using System;
 using System.Collections.Generic;
 
@@ -8,9 +8,9 @@ namespace ServicesADO
 {
     public class TipoPixServiceADO
     {
-        private readonly ITipoPixRepositoryADO _tipoPixRepository;
+        private readonly ITipoPixRepository _tipoPixRepository;
 
-        public TipoPixServiceADO(ITipoPixRepositoryADO tipoPixRepository)
+        public TipoPixServiceADO(ITipoPixRepository tipoPixRepository)
         {
             _tipoPixRepository = tipoPixRepository;
         }

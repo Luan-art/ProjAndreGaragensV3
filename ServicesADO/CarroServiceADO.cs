@@ -1,12 +1,12 @@
-﻿using Models;
+﻿using InterfaceRepositorys;
+using Models;
 using RepositoriesADO;
-using RepositoriesADO.InterfaceRepositoryADO;
 
 namespace ServicesADO
 {
     public class CarroServiceADO
     {
-        private readonly ICarroRepositoryADO _carroRepository;
+        private readonly ICarroRepository _carroRepository;
 
         public CarroServiceADO()
         {

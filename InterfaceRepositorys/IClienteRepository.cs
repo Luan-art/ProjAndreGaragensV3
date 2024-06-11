@@ -4,7 +4,7 @@ namespace InterfaceRepositorys
 {
     public interface IClienteRepository
     {
-        bool InserirCliente(Clientes cliente);
-        Clientes GetCliente(string documento);
+        bool InserirCliente(Cliente cliente);
+        Cliente GetCliente(string documento);
     }
 }

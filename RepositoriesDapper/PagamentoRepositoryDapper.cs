@@ -12,7 +12,23 @@ namespace RepositoriesDapper
 
         public Pagamento GetPagamento(int id)
         {
-            throw new NotImplementedException();
+            Pagamento pag = new Pagamento();
+            string sql = "SELECT CartaoNumero , BoletoId, PixId, DataPagamento FROM Pagamento WHERE Id = @Id";
+
+            try
+            {
+                using (var db = new SqlConnection(strConn))
+                {
+                    db.Open();
+                    pag = db.QuerySingleOrDefault<Pagamento>(sql, new { Id = id });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return pag;
         }
 
         public bool InjetarPagamento(Pagamento pagamento)

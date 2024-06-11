@@ -13,7 +13,23 @@ namespace RepositoriesDapper
 
         public TipoPix GetTipoPix(int id)
         {
-            throw new NotImplementedException();
+            TipoPix pag = new TipoPix();
+            string sql = "SELECT Nome FROM TipoPix WHERE Id = @Id";
+
+            try
+            {
+                using (var db = new SqlConnection(strConn))
+                {
+                    db.Open();
+                    pag = db.QuerySingleOrDefault<TipoPix>(sql, new { Id = id });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return pag;
         }
 
         public bool InserirTipoPix(TipoPix tiposPix)

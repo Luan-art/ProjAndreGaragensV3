@@ -6,12 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InterfaceRepositorys;
 
 namespace ServicesADO
 {
     public class CarroServicoServiceADO
     {
-        private readonly ICarroServicoRepositoryADO _carroServiceRepository;
+        private readonly ICarroServicoRepository _carroServiceRepository;
 
         public CarroServicoServiceADO()
         {

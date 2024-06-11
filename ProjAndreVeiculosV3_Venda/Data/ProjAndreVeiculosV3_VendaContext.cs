@@ -16,8 +16,8 @@ namespace ProjAndreVeiculosV3_Venda.Data
 
         public DbSet<Models.Venda> Vendas { get; set; } = default!;
         public DbSet<Models.Carro> Carro { get; set; } = default!;
-        public DbSet<Models.Pessoas> Pessoas { get; set; } = default!;
-        public DbSet<Models.Clientes> Cliente { get; set; } = default!;
+        public DbSet<Models.Pessoa> Pessoas { get; set; } = default!;
+        public DbSet<Models.Cliente> Cliente { get; set; } = default!;
         public DbSet<Models.Funcionario> Funcionarios { get; set; } = default!;
         public DbSet<Models.Pagamento> Pagamento { get; set; } = default!;
 
@@ -27,10 +27,10 @@ namespace ProjAndreVeiculosV3_Venda.Data
             modelBuilder.Entity<Venda>()
                 .ToTable("Vendas");
 
-            modelBuilder.Entity<Pessoas>()
+            modelBuilder.Entity<Pessoa>()
                 .ToTable("Pessoas")
                 .HasDiscriminator<string>("PessoaType")
-                .HasValue<Clientes>("Clientes")
+                .HasValue<Cliente>("Clientes")
                 .HasValue<Funcionario>("Funcionarios");
 
             base.OnModelCreating(modelBuilder);

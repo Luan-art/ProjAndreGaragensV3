@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Models;
 using ProjAndreVeiculosV3_Endereco.Data;
+using ProjAndreVeiculosV3_Endereco.Service;
 
 namespace ProjAndreVeiculosV3_Endereco.Controllers
 {
@@ -18,12 +19,14 @@ namespace ProjAndreVeiculosV3_Endereco.Controllers
     {
         private readonly ProjAndreVeiculosV3_EnderecoContext _context;
         private readonly HttpClient _httpClient;
+        private readonly EnderecoService enderecoService;
 
 
-        public EnderecosController(ProjAndreVeiculosV3_EnderecoContext context, HttpClient httpClient)
+        public EnderecosController(ProjAndreVeiculosV3_EnderecoContext context, HttpClient httpClient, EnderecoService enderecoService)
         {
             _context = context;
             _httpClient = httpClient;
+            this.enderecoService = enderecoService;
         }
 
         // GET: api/Enderecos
@@ -133,6 +136,12 @@ namespace ProjAndreVeiculosV3_Endereco.Controllers
         [HttpPost("{cep}")]
         public async Task<ActionResult<int>> PostEndereco(string cep)
         {
+            
+            if(enderecoService.Get().Count == 0)
+            {
+                PopularMongo();
+            }
+
             string url = $"https://viacep.com.br/ws/{cep}/json/";
             HttpResponseMessage response = await _httpClient.GetAsync(url);
 
@@ -151,11 +160,22 @@ namespace ProjAndreVeiculosV3_Endereco.Controllers
                 _context.Endereco.Add(endereco);
                 await _context.SaveChangesAsync();
 
+                enderecoService.Create(endereco);
+
                 return endereco.Id;
             }
             else
             {
                 return BadRequest("Erro ao buscar endereço pelo CEP.");
+            }
+        }
+
+        private void PopularMongo()
+        {
+            var enderecosSql = _context.Endereco.ToList();
+            if (enderecosSql.Count() > 0)
+            {
+                enderecoService.GetMany(enderecosSql);
             }
         }
 

@@ -11,13 +11,13 @@ namespace Models
     public class Cliente : Pessoa
     {
         public Decimal Renda { get; set; }
-/*
+
         public Cliente() { }
         public Cliente(ClienteDTO dto) : base (dto)
         { 
             Renda = dto.Renda;
             
-        }*/
+        }
         
     }
 }

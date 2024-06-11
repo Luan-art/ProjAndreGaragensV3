@@ -41,7 +41,7 @@ namespace ProjAndreVeiculosV3_Cliente.Controllers
             var clientes = await _context.Cliente.ToListAsync();
 
 
-            foreach (Cliente cliente in clientes)
+          foreach (Cliente cliente in clientes)
             {
                 Endereco endereco = await _context.Endereco.Where(e => cliente.Endereco.Id == e.Id).FirstAsync();
                 cliente.Endereco = endereco;
@@ -102,15 +102,15 @@ namespace ProjAndreVeiculosV3_Cliente.Controllers
 
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         // POST: api/Clientes/{cep}
-     /*   [HttpPost("{cep}")]
+        [HttpPost("{cep}")]
         public async Task<ActionResult<Cliente>> PostCliente(string cep, ClienteDTO clienteDTO)
         {
             var enderecoId = await CriarEnderecoRemotamente(cep);
 
             if (enderecoId != null)
             {
-              //  Cliente cliente = new Cliente(clienteDTO);
-              //  cliente.Endereco = await _context.Endereco.FindAsync(enderecoId);
+                 Cliente cliente = new Cliente(clienteDTO);
+                  cliente.Endereco = await _context.Endereco.FindAsync(enderecoId);
 
                 _context.Cliente.Add(cliente);
                 await _context.SaveChangesAsync();
@@ -121,7 +121,7 @@ namespace ProjAndreVeiculosV3_Cliente.Controllers
             {
                 return BadRequest("Erro ao criar endereço pelo CEP.");
             }
-        }*/
+        }
 
         private async Task<int?> CriarEnderecoRemotamente(string cep)
         {

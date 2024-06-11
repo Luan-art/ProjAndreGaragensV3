@@ -194,6 +194,39 @@ namespace ProjAndreVeiculosV3_Carro.Migrations
                     b.ToTable("Categoria", (string)null);
                 });
 
+            modelBuilder.Entity("Models.Cliente", b =>
+                {
+                    b.Property<string>("Documento")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("DataNascimento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EnderecoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Renda")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Documento");
+
+                    b.HasIndex("EnderecoId");
+
+                    b.ToTable("Cliente", (string)null);
+                });
+
             modelBuilder.Entity("Models.CNH", b =>
                 {
                     b.Property<string>("Cnh")
@@ -250,6 +283,76 @@ namespace ProjAndreVeiculosV3_Carro.Migrations
                     b.HasIndex("CarroPlaca");
 
                     b.ToTable("Compra", (string)null);
+                });
+
+            modelBuilder.Entity("Models.Condutor", b =>
+                {
+                    b.Property<string>("Documento")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Cnh")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("DataNascimento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EnderecoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Documento");
+
+                    b.HasIndex("Cnh");
+
+                    b.HasIndex("EnderecoId");
+
+                    b.ToTable("Condutor", (string)null);
+                });
+
+            modelBuilder.Entity("Models.Dependente", b =>
+                {
+                    b.Property<string>("Documento")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("DataNascimento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EnderecoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("clienteDocumento")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Documento");
+
+                    b.HasIndex("EnderecoId");
+
+                    b.HasIndex("clienteDocumento");
+
+                    b.ToTable("Dependente", (string)null);
                 });
 
             modelBuilder.Entity("Models.Endereco", b =>
@@ -314,6 +417,47 @@ namespace ProjAndreVeiculosV3_Carro.Migrations
                     b.ToTable("Financiamento", (string)null);
                 });
 
+            modelBuilder.Entity("Models.Funcionario", b =>
+                {
+                    b.Property<string>("Documento")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("CargoId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Comissao")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("DataNascimento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EnderecoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("ValorComissao")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Documento");
+
+                    b.HasIndex("CargoId");
+
+                    b.HasIndex("EnderecoId");
+
+                    b.ToTable("Funcionario", (string)null);
+                });
+
             modelBuilder.Entity("Models.Pagamento", b =>
                 {
                     b.Property<int>("Id")
@@ -354,7 +498,6 @@ namespace ProjAndreVeiculosV3_Carro.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("ClienteDocumento")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("DataCobranca")
@@ -378,36 +521,6 @@ namespace ProjAndreVeiculosV3_Carro.Migrations
                     b.HasIndex("ClienteDocumento");
 
                     b.ToTable("PendenciaFinanceira", (string)null);
-                });
-
-            modelBuilder.Entity("Models.Pessoa", b =>
-                {
-                    b.Property<string>("Documento")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("DataNascimento")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("EnderecoId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Telefone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Documento");
-
-                    b.HasIndex("EnderecoId");
-
-                    b.ToTable("Pessoa");
                 });
 
             modelBuilder.Entity("Models.Pix", b =>
@@ -535,14 +648,12 @@ namespace ProjAndreVeiculosV3_Carro.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ClienteDocumento")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("DataVenda")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FuncionarioDocumento")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("PagamentoId")
@@ -562,59 +673,6 @@ namespace ProjAndreVeiculosV3_Carro.Migrations
                     b.HasIndex("PagamentoId");
 
                     b.ToTable("Venda", (string)null);
-                });
-
-            modelBuilder.Entity("Models.Cliente", b =>
-                {
-                    b.HasBaseType("Models.Pessoa");
-
-                    b.Property<decimal>("Renda")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.ToTable("Cliente", (string)null);
-                });
-
-            modelBuilder.Entity("Models.Condutor", b =>
-                {
-                    b.HasBaseType("Models.Pessoa");
-
-                    b.Property<string>("Cnh")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasIndex("Cnh");
-
-                    b.ToTable("Condutor", (string)null);
-                });
-
-            modelBuilder.Entity("Models.Dependente", b =>
-                {
-                    b.HasBaseType("Models.Pessoa");
-
-                    b.Property<string>("clienteDocumento")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasIndex("clienteDocumento");
-
-                    b.ToTable("Dependente", (string)null);
-                });
-
-            modelBuilder.Entity("Models.Funcionario", b =>
-                {
-                    b.HasBaseType("Models.Pessoa");
-
-                    b.Property<int>("CargoId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Comissao")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("ValorComissao")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasIndex("CargoId");
-
-                    b.ToTable("Funcionario", (string)null);
                 });
 
             modelBuilder.Entity("Models.AceiteTermoDeUso", b =>
@@ -653,6 +711,17 @@ namespace ProjAndreVeiculosV3_Carro.Migrations
                     b.Navigation("Servico");
                 });
 
+            modelBuilder.Entity("Models.Cliente", b =>
+                {
+                    b.HasOne("Models.Endereco", "Endereco")
+                        .WithMany()
+                        .HasForeignKey("EnderecoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Endereco");
+                });
+
             modelBuilder.Entity("Models.CNH", b =>
                 {
                     b.HasOne("Models.Categoria", "categoria")
@@ -673,6 +742,40 @@ namespace ProjAndreVeiculosV3_Carro.Migrations
                     b.Navigation("Carro");
                 });
 
+            modelBuilder.Entity("Models.Condutor", b =>
+                {
+                    b.HasOne("Models.CNH", "CNH")
+                        .WithMany()
+                        .HasForeignKey("Cnh");
+
+                    b.HasOne("Models.Endereco", "Endereco")
+                        .WithMany()
+                        .HasForeignKey("EnderecoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CNH");
+
+                    b.Navigation("Endereco");
+                });
+
+            modelBuilder.Entity("Models.Dependente", b =>
+                {
+                    b.HasOne("Models.Endereco", "Endereco")
+                        .WithMany()
+                        .HasForeignKey("EnderecoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Models.Cliente", "cliente")
+                        .WithMany()
+                        .HasForeignKey("clienteDocumento");
+
+                    b.Navigation("Endereco");
+
+                    b.Navigation("cliente");
+                });
+
             modelBuilder.Entity("Models.Financiamento", b =>
                 {
                     b.HasOne("Models.Banco", "Banco")
@@ -688,6 +791,25 @@ namespace ProjAndreVeiculosV3_Carro.Migrations
                     b.Navigation("Banco");
 
                     b.Navigation("venda");
+                });
+
+            modelBuilder.Entity("Models.Funcionario", b =>
+                {
+                    b.HasOne("Models.Cargo", "Cargo")
+                        .WithMany()
+                        .HasForeignKey("CargoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Models.Endereco", "Endereco")
+                        .WithMany()
+                        .HasForeignKey("EnderecoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cargo");
+
+                    b.Navigation("Endereco");
                 });
 
             modelBuilder.Entity("Models.Pagamento", b =>
@@ -719,22 +841,9 @@ namespace ProjAndreVeiculosV3_Carro.Migrations
                 {
                     b.HasOne("Models.Cliente", "Cliente")
                         .WithMany()
-                        .HasForeignKey("ClienteDocumento")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ClienteDocumento");
 
                     b.Navigation("Cliente");
-                });
-
-            modelBuilder.Entity("Models.Pessoa", b =>
-                {
-                    b.HasOne("Models.Endereco", "Endereco")
-                        .WithMany()
-                        .HasForeignKey("EnderecoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Endereco");
                 });
 
             modelBuilder.Entity("Models.Pix", b =>
@@ -777,15 +886,11 @@ namespace ProjAndreVeiculosV3_Carro.Migrations
 
                     b.HasOne("Models.Cliente", "Cliente")
                         .WithMany()
-                        .HasForeignKey("ClienteDocumento")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ClienteDocumento");
 
                     b.HasOne("Models.Funcionario", "Funcionario")
                         .WithMany()
-                        .HasForeignKey("FuncionarioDocumento")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FuncionarioDocumento");
 
                     b.HasOne("Models.Pagamento", "Pagamento")
                         .WithMany()
@@ -800,64 +905,6 @@ namespace ProjAndreVeiculosV3_Carro.Migrations
                     b.Navigation("Funcionario");
 
                     b.Navigation("Pagamento");
-                });
-
-            modelBuilder.Entity("Models.Cliente", b =>
-                {
-                    b.HasOne("Models.Pessoa", null)
-                        .WithOne()
-                        .HasForeignKey("Models.Cliente", "Documento")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Models.Condutor", b =>
-                {
-                    b.HasOne("Models.CNH", "CNH")
-                        .WithMany()
-                        .HasForeignKey("Cnh");
-
-                    b.HasOne("Models.Pessoa", null)
-                        .WithOne()
-                        .HasForeignKey("Models.Condutor", "Documento")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-
-                    b.Navigation("CNH");
-                });
-
-            modelBuilder.Entity("Models.Dependente", b =>
-                {
-                    b.HasOne("Models.Pessoa", null)
-                        .WithOne()
-                        .HasForeignKey("Models.Dependente", "Documento")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-
-                    b.HasOne("Models.Cliente", "cliente")
-                        .WithMany()
-                        .HasForeignKey("clienteDocumento")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("cliente");
-                });
-
-            modelBuilder.Entity("Models.Funcionario", b =>
-                {
-                    b.HasOne("Models.Cargo", "Cargo")
-                        .WithMany()
-                        .HasForeignKey("CargoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Models.Pessoa", null)
-                        .WithOne()
-                        .HasForeignKey("Models.Funcionario", "Documento")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-
-                    b.Navigation("Cargo");
                 });
 #pragma warning restore 612, 618
         }

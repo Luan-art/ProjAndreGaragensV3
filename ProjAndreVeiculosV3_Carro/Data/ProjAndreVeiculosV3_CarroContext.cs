@@ -15,7 +15,6 @@ namespace ProjAndreVeiculosV3_Carro.Data
         }
 
         public DbSet<Models.Carro> Carro { get; set; } = default!;
-        public DbSet<Models.Pessoa>? Pessoa { get; set; } = default!;
         public DbSet<Models.Cliente>? Cliente { get; set; } = default!;
         public DbSet<Models.Funcionario>? Funcionario { get; set; } = default!;
         public DbSet<Models.Boleto>? Boleto { get; set; } = default!;
@@ -46,9 +45,7 @@ namespace ProjAndreVeiculosV3_Carro.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Configura a chave primária na entidade raiz Pessoa
-            modelBuilder.Entity<Pessoa>()
-                .HasKey(p => p.Documento);
+            
 
             modelBuilder.Entity<Cliente>().ToTable("Cliente");
             modelBuilder.Entity<Funcionario>().ToTable("Funcionario");

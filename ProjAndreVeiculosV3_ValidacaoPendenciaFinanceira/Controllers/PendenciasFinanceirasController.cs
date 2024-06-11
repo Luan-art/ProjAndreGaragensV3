@@ -91,12 +91,13 @@ namespace ProjAndreVeiculosV3_ValidacaoPendenciaFinanceira.Controllers
           {
               return Problem("Entity set 'ProjAndreVeiculosV3_ValidacaoPendenciaFinanceiraContext.PendenciaFinanceira'  is null.");
           }
-          PendenciaFinanceira pendenciaFinanceira = new(pendenciaFinanceiraDTO);
-            _context.PendenciaFinanceira.Add(pendenciaFinanceira);
 
+          PendenciaFinanceira pendenciaFinanceira = new PendenciaFinanceira(pendenciaFinanceiraDTO);
+            
+        //  pendenciaFinanceira.Cliente.Endereco = await _context.Endereco.FindAsync(pendenciaFinanceira.Cliente.Endereco.Id);//
             pendenciaFinanceira.Cliente = await _context.Cliente.FindAsync(pendenciaFinanceiraDTO.ClienteDocumento);
-            pendenciaFinanceira.Cliente.Endereco = await _context.Endereco.FindAsync(pendenciaFinanceira.Cliente.Endereco.Id);
-
+          
+            _context.PendenciaFinanceira.Add(pendenciaFinanceira);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetPendenciaFinanceira", new { id = pendenciaFinanceira.Id }, pendenciaFinanceira);

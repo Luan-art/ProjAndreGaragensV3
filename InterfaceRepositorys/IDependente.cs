@@ -1,4 +1,5 @@
 ﻿using Models;
+using Models.DTO;
 
 namespace InterfaceRepositorys
 {
@@ -6,6 +7,6 @@ namespace InterfaceRepositorys
     {
         public Dependente InserirDependente(Dependente dependente);
 
-        public Dependente GetDependente();
+        public DependenteDTO GetDependente(string Documento);
     }
 }

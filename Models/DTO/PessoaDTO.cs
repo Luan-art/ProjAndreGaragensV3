@@ -16,7 +16,6 @@ namespace Models.DTO
         public string Telefone { get; set; }
         public string Email { get; set; }
 
-
-
+        public int EnderecoId{ get; set; }
     }
 }

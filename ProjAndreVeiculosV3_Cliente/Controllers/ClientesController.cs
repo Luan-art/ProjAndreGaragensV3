@@ -110,7 +110,7 @@ namespace ProjAndreVeiculosV3_Cliente.Controllers
             if (enderecoId != null)
             {
                  Cliente cliente = new Cliente(clienteDTO);
-                  cliente.Endereco = await _context.Endereco.FindAsync(enderecoId);
+                 cliente.Endereco = await _context.Endereco.FindAsync(enderecoId);
 
                 _context.Cliente.Add(cliente);
                 await _context.SaveChangesAsync();

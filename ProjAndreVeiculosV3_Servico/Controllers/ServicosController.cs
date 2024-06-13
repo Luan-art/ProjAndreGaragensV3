@@ -93,7 +93,7 @@ namespace ProjAndreVeiculosV3_Servico.Controllers
             _context.Servico.Add(servico);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetServico", new { id = servico.Id }, servico);
+            return servico;
         }
 
         // DELETE: api/Servicos/5

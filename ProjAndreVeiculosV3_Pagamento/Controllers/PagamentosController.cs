@@ -35,6 +35,7 @@ namespace ProjAndreVeiculosV3_Pagamento.Controllers
                 .Include(p => p.Boleto)
                 .Include(p => p.Cartao)
                 .Include(p => p.Pix)
+                .Include(tp => tp.Pix.Tipo)
                 .ToListAsync();
 
             return pagamentos;

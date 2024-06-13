@@ -122,7 +122,7 @@ namespace ProjAndreVeiculosV3_Carro.Controllers
                 }
             }
 
-            return CreatedAtAction("GetCarro", new { id = carro.Placa }, carro);
+            return carro;
         }
 
         // DELETE: api/Carros/5

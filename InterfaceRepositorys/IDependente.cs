@@ -8,5 +8,8 @@ namespace InterfaceRepositorys
         public Dependente InserirDependente(Dependente dependente);
 
         public DependenteDTO GetDependente(string Documento);
+
+        public List<DependenteDTO> GetDependente();
+
     }
 }

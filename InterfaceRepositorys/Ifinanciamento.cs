@@ -11,8 +11,8 @@ namespace InterfaceRepositorys
     {
         public Financiamento InserirFinanciamento(Financiamento financiamento);
 
-        public Financiamento GetSeguro(int id);
+        public Financiamento GetFinancimento(int id);
 
-        public List<Financiamento> GetSeguro();
+        public List<Financiamento> GetFinanciamento();
     }
 }

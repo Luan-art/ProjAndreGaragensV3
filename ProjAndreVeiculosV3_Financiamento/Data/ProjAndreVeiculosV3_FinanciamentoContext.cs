@@ -15,5 +15,8 @@ namespace ProjAndreVeiculosV3_Financiamento.Data
         }
 
         public DbSet<Models.Financiamento> Financiamento { get; set; } = default!;
+        public DbSet<Models.Venda> Venda { get; set; } = default!;
+        public DbSet<Models.Banco> Banco { get; set; } = default!;
+
     }
 }

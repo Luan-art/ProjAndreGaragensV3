@@ -14,27 +14,11 @@ namespace ProjAndreVeiculosV3_Venda.Data
         {
         }
 
-        public DbSet<Models.Venda> Vendas { get; set; } = default!;
+        public DbSet<Models.Venda> Venda { get; set; } = default!;
         public DbSet<Models.Carro> Carro { get; set; } = default!;
-        public DbSet<Models.Pessoa> Pessoas { get; set; } = default!;
         public DbSet<Models.Cliente> Cliente { get; set; } = default!;
-        public DbSet<Models.Funcionario> Funcionarios { get; set; } = default!;
+        public DbSet<Models.Funcionario> Funcionario { get; set; } = default!;
         public DbSet<Models.Pagamento> Pagamento { get; set; } = default!;
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-
-            modelBuilder.Entity<Venda>()
-                .ToTable("Vendas");
-
-            modelBuilder.Entity<Pessoa>()
-                .ToTable("Pessoas")
-                .HasDiscriminator<string>("PessoaType")
-                .HasValue<Cliente>("Clientes")
-                .HasValue<Funcionario>("Funcionarios");
-
-            base.OnModelCreating(modelBuilder);
-        }
 
     }
 }

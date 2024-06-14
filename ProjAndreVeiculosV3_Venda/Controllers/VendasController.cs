@@ -27,12 +27,12 @@ namespace ProjAndreVeiculosV3_Venda.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Venda>>> GetVenda()
         {
-          if (_context.Vendas == null)
+          if (_context.Venda == null)
           {
               return NotFound();
           }
 
-            var vendas = await _context.Vendas
+            var vendas = await _context.Venda
                 .Include(v => v.Cliente)
                 .Include(v => v.Carro)
                 .Include(v => v.Pagamento)
@@ -46,11 +46,11 @@ namespace ProjAndreVeiculosV3_Venda.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Venda>> GetVenda(int id)
         {
-          if (_context.Vendas == null)
+          if (_context.Venda == null)
           {
               return NotFound();
           }
-            var venda = await _context.Vendas
+            var venda = await _context.Venda
                     .Include(v => v.Cliente)
                     .Include(v => v.Carro)
                     .Include(v => v.Pagamento)
@@ -102,17 +102,17 @@ namespace ProjAndreVeiculosV3_Venda.Controllers
         [HttpPost]
         public async Task<ActionResult<Venda>> PostVenda(VendaDTO vendaDTO)
         {
-          if (_context.Vendas == null)
+          if (_context.Venda == null)
           {
               return Problem("Entity set 'ProjAndreVeiculosV3_VendaContext.Venda'  is null.");
           }
             Venda venda = new Venda(vendaDTO);
             venda.Carro = await _context.Carro.FindAsync(venda.Carro.Placa);
             venda.Cliente = await _context.Cliente.FindAsync(venda.Cliente.Documento);
-            venda.Funcionario = await _context.Funcionarios.FindAsync(venda.Funcionario.Documento);
+            venda.Funcionario = await _context.Funcionario.FindAsync(venda.Funcionario.Documento);
             venda.Pagamento = await _context.Pagamento.FindAsync(venda.Pagamento.Id);
 
-            _context.Vendas.Add(venda);
+            _context.Venda.Add(venda);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetVenda", new { id = venda.Id }, venda);
@@ -122,17 +122,17 @@ namespace ProjAndreVeiculosV3_Venda.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteVenda(int id)
         {
-            if (_context.Vendas == null)
+            if (_context.Venda == null)
             {
                 return NotFound();
             }
-            var venda = await _context.Vendas.FindAsync(id);
+            var venda = await _context.Venda.FindAsync(id);
             if (venda == null)
             {
                 return NotFound();
             }
 
-            _context.Vendas.Remove(venda);
+            _context.Venda.Remove(venda);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -140,7 +140,7 @@ namespace ProjAndreVeiculosV3_Venda.Controllers
 
         private bool VendaExists(int id)
         {
-            return (_context.Vendas?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Venda?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

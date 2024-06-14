@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Models;
+using Models.DTO;
 using ProjAndreVeiculosV3_Financiamento.Data;
+using ProjAndreVeiculosV3_Financiamento.Service;
 
 namespace ProjAndreVeiculosV3_Financiamento.Controllers
 {
@@ -15,110 +17,62 @@ namespace ProjAndreVeiculosV3_Financiamento.Controllers
     public class FinanciamentoesController : ControllerBase
     {
         private readonly ProjAndreVeiculosV3_FinanciamentoContext _context;
+        private readonly FinanciamentoServico _service;
 
-        public FinanciamentoesController(ProjAndreVeiculosV3_FinanciamentoContext context)
+        public FinanciamentoesController(ProjAndreVeiculosV3_FinanciamentoContext context, FinanciamentoServico servico)
         {
             _context = context;
+            _service = servico;
         }
 
-        // GET: api/Financiamentoes
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Financiamento>>> GetFinanciamento()
-        {
-          if (_context.Financiamento == null)
-          {
-              return NotFound();
-          }
-            return await _context.Financiamento.ToListAsync();
-        }
-
-        // GET: api/Financiamentoes/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Financiamento>> GetFinanciamento(int id)
-        {
-          if (_context.Financiamento == null)
-          {
-              return NotFound();
-          }
-            var financiamento = await _context.Financiamento.FindAsync(id);
-
-            if (financiamento == null)
-            {
-                return NotFound();
-            }
-
-            return financiamento;
-        }
-
-        // PUT: api/Financiamentoes/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutFinanciamento(int id, Financiamento financiamento)
-        {
-            if (id != financiamento.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(financiamento).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!FinanciamentoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Financiamentoes
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Financiamento>> PostFinanciamento(Financiamento financiamento)
-        {
-          if (_context.Financiamento == null)
-          {
-              return Problem("Entity set 'ProjAndreVeiculosV3_FinanciamentoContext.Financiamento'  is null.");
-          }
-            _context.Financiamento.Add(financiamento);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetFinanciamento", new { id = financiamento.Id }, financiamento);
-        }
-
-        // DELETE: api/Financiamentoes/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteFinanciamento(int id)
         {
             if (_context.Financiamento == null)
             {
                 return NotFound();
             }
-            var financiamento = await _context.Financiamento.FindAsync(id);
+            return _service.GetFinanciamento();
+        }
+
+        // GET: api/Servicos/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Financiamento>> GetFinanciamento(int id)
+        {
+            if (_context.Financiamento == null)
+            {
+                return NotFound();
+            }
+            Financiamento financiamento = new Financiamento();
+            financiamento = _service.GetFinanciamento(id);
+
             if (financiamento == null)
             {
                 return NotFound();
             }
 
-            _context.Financiamento.Remove(financiamento);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            return Ok(financiamento);
         }
 
-        private bool FinanciamentoExists(int id)
+
+        // POST: api/Servicos
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        public async Task<ActionResult<FinanciamentoDTO>> PostServico(FinanciamentoDTO financiamentoDTO)
         {
-            return (_context.Financiamento?.Any(e => e.Id == id)).GetValueOrDefault();
+            if (_context.Financiamento == null)
+            {
+                return Problem("Entity set 'ProjAndreVeiculosV3_ServicoContext.Servico'  is null.");
+            }
+            Financiamento financiamento = new Financiamento(financiamentoDTO);
+            financiamento.Banco = await _context.Banco.FindAsync(financiamentoDTO.Banco);
+            financiamento.venda = await _context.Venda.FindAsync(financiamentoDTO.venda);
+
+           
+
+            _service.InserirFinanciamento(financiamento);
+
+            return financiamentoDTO;
         }
     }
 }

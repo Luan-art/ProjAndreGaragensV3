@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models.DTO
 {
-    public class FinanceiamentoDTO
+    public class FinanciamentoDTO
     {
         public int Id { get; set; }
         public int venda { get; set; }

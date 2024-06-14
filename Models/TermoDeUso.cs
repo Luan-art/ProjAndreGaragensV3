@@ -12,7 +12,7 @@ namespace Models
     public class TermoDeUso
     {
         [BsonId]
-        [BsonRepresentation(BsonType.String)]
+        [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
         public string Texto { get; set; }
         public int Versao { get; set; }

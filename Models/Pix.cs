@@ -18,8 +18,6 @@ namespace Models
         {
             Tipo = new TipoPix { Id = dto.Tipo };
             ChavePix = dto.ChavePix;
-
-
         }
     }
 }

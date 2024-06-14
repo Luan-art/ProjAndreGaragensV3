@@ -1,10 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using ProjAndreVeiculosV3_Servico.Data;
-
+using ProjAndreVeiculosV3_Financiamento.Data;
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<ProjAndreVeiculosV3_ServicoContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("ProjAndreVeiculosV3_ServicoContext") ?? throw new InvalidOperationException("Connection string 'ProjAndreVeiculosV3_ServicoContext' not found.")));
+builder.Services.AddDbContext<ProjAndreVeiculosV3_FinanciamentoContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ProjAndreVeiculosV3_FinanciamentoContext") ?? throw new InvalidOperationException("Connection string 'ProjAndreVeiculosV3_FinanciamentoContext' not found.")));
 
 // Add services to the container.
 

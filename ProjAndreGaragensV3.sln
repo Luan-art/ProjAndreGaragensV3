@@ -53,6 +53,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjAndreVeiculosV3_Conduto
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjAndreVeiculosV3_TermoUso", "ProjAndreVeiculosV3_TermoUso\ProjAndreVeiculosV3_TermoUso.csproj", "{757EA856-95D2-4EDA-B01B-938CC09AF9B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjAndreVeiculosV3_Seguro", "ProjAndreVeiculosV3_Seguro\ProjAndreVeiculosV3_Seguro.csproj", "{C52D8394-FBA5-40F0-847E-6AA28638F7B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjAndreVeiculosV3_Financiamento", "ProjAndreVeiculosV3_Financiamento\ProjAndreVeiculosV3_Financiamento.csproj", "{0FFEA4DD-FEB9-4235-B281-0F1A28AF4CED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -159,6 +163,14 @@ Global
 		{757EA856-95D2-4EDA-B01B-938CC09AF9B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{757EA856-95D2-4EDA-B01B-938CC09AF9B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{757EA856-95D2-4EDA-B01B-938CC09AF9B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C52D8394-FBA5-40F0-847E-6AA28638F7B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C52D8394-FBA5-40F0-847E-6AA28638F7B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C52D8394-FBA5-40F0-847E-6AA28638F7B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C52D8394-FBA5-40F0-847E-6AA28638F7B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FFEA4DD-FEB9-4235-B281-0F1A28AF4CED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FFEA4DD-FEB9-4235-B281-0F1A28AF4CED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FFEA4DD-FEB9-4235-B281-0F1A28AF4CED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FFEA4DD-FEB9-4235-B281-0F1A28AF4CED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

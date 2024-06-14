@@ -30,7 +30,7 @@ namespace ProjAndreVeiculosV3_TermoUso.Controllers
         public async Task<ActionResult<TermoDeUso>> Create([FromBody] TermoDeUso termoUso)
         {
             _termoService.Create(termoUso);
-            return CreatedAtRoute("GetAddess", new { id = termoUso.Id }, termoUso);
+            return CreatedAtRoute("GetTermoUso", new { id = termoUso.Id }, termoUso);
         }
     }
 }

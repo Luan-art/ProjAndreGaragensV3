@@ -29,7 +29,7 @@ builder.Services.AddSingleton<IConnectionFactory>(sp =>
 {
     return new ConnectionFactory()
     {
-        HostName = "localhost",  // Configure conforme necessário
+        HostName = "localhost",   
         UserName = "guest",
         Password = "guest"
     };

@@ -39,15 +39,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjAndreVeiculosV3_Validac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestesUnitarios", "TestesUnitarios\TestesUnitarios.csproj", "{2CCB250D-383B-4BBF-AE8C-113BAE71AA6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjAndreVeiculosV3_Dependente", "ProjAndreVeiculosV3_Dependente\ProjAndreVeiculosV3_Dependente.csproj", "{4D1C025F-20FD-40DF-A828-2DE7A7CE9B0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjAndreVeiculosV3_Dependente", "ProjAndreVeiculosV3_Dependente\ProjAndreVeiculosV3_Dependente.csproj", "{4D1C025F-20FD-40DF-A828-2DE7A7CE9B0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjAndreVeiculosV3_Banco", "ProjAndreVeiculosV3_Banco\ProjAndreVeiculosV3_Banco.csproj", "{505E63FF-1B29-46CA-B248-38BEA8C68D37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjAndreVeiculosV3_Banco", "ProjAndreVeiculosV3_Banco\ProjAndreVeiculosV3_Banco.csproj", "{505E63FF-1B29-46CA-B248-38BEA8C68D37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjAndreVeiculosV3_Banco_Consumer", "ProjAndreVeiculosV3_Banco_Consumer\ProjAndreVeiculosV3_Banco_Consumer.csproj", "{B789BCCB-3180-4B80-9471-34CD78909D8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjAndreVeiculosV3_Banco_Consumer", "ProjAndreVeiculosV3_Banco_Consumer\ProjAndreVeiculosV3_Banco_Consumer.csproj", "{B789BCCB-3180-4B80-9471-34CD78909D8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjAndreVeiculosV3_Banco_MongoDB", "ProjAndreVeiculosV3_Banco_MongoDB\ProjAndreVeiculosV3_Banco_MongoDB.csproj", "{F4207FA0-57E6-49ED-821F-08172D5E1FE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjAndreVeiculosV3_Banco_MongoDB", "ProjAndreVeiculosV3_Banco_MongoDB\ProjAndreVeiculosV3_Banco_MongoDB.csproj", "{F4207FA0-57E6-49ED-821F-08172D5E1FE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjAndreVeiculosV3_Banco_SQLServer", "ProjAndreVeiculosV3_Banco_SQLServer\ProjAndreVeiculosV3_Banco_SQLServer.csproj", "{5AE6F42C-843D-4228-8604-317DD88AE12C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjAndreVeiculosV3_Banco_SQLServer", "ProjAndreVeiculosV3_Banco_SQLServer\ProjAndreVeiculosV3_Banco_SQLServer.csproj", "{5AE6F42C-843D-4228-8604-317DD88AE12C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjAndreVeiculosV3_Condutor", "ProjAndreVeiculosV3_Condutor\ProjAndreVeiculosV3_Condutor.csproj", "{E91EF7C3-E84F-4BE7-8B5E-95BEA98B5601}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjAndreVeiculosV3_TermoUso", "ProjAndreVeiculosV3_TermoUso\ProjAndreVeiculosV3_TermoUso.csproj", "{757EA856-95D2-4EDA-B01B-938CC09AF9B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -147,6 +151,14 @@ Global
 		{5AE6F42C-843D-4228-8604-317DD88AE12C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AE6F42C-843D-4228-8604-317DD88AE12C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AE6F42C-843D-4228-8604-317DD88AE12C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E91EF7C3-E84F-4BE7-8B5E-95BEA98B5601}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E91EF7C3-E84F-4BE7-8B5E-95BEA98B5601}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E91EF7C3-E84F-4BE7-8B5E-95BEA98B5601}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E91EF7C3-E84F-4BE7-8B5E-95BEA98B5601}.Release|Any CPU.Build.0 = Release|Any CPU
+		{757EA856-95D2-4EDA-B01B-938CC09AF9B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{757EA856-95D2-4EDA-B01B-938CC09AF9B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{757EA856-95D2-4EDA-B01B-938CC09AF9B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{757EA856-95D2-4EDA-B01B-938CC09AF9B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
